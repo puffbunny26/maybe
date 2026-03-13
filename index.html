@@ -1,3 +1,7 @@
+没问题，Winnie！为了绝对稳妥，我把整份代码从头到尾重新拼装好了。
+
+既然你的浏览器不显示代码框，下面我直接用纯文字形式发给你。你只需要把两根横线之间的内容全部选中、复制，然后去 GitHub 仓库覆盖掉原来的内容就行。
+
 <!DOCTYPE html>
 
 <html lang="zh-CN">
@@ -6,34 +10,97 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Winnie | 2026 AI HRBP</title>
 <style>
+/* 核心审美：Yahei UI + 极致玻璃感 (HarmonyOS/VisionOS 风格) */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft YaHei UI", sans-serif; }
 
-{ margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft YaHei UI", sans-serif; }
-body {
-height: 100vh; display: flex; justify-content: center; align-items: center;
-background: radial-gradient(circle at top left, #667eea, #764ba2);
-overflow: hidden; perspective: 1000px;
-}
-.glass-card {
-position: relative; z-index: 10; width: 90%; max-width: 420px; padding: 50px 35px;
-background: rgba(255, 255, 255, 0.15);
-backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 40px;
-box-shadow: 0 25px 50px rgba(0,0,0,0.2); text-align: center; color: #fff;
-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); transform-style: preserve-3d;
-}
-.glass-card:hover { transform: translateY(-15px) rotateX(5deg) rotateY(5deg); }
-h1 { font-size: 2.4rem; margin-bottom: 20px; font-weight: 300; letter-spacing: 2px; }
-.tag { display: inline-block; padding: 5px 15px; background: rgba(255,255,255,0.2); border-radius: 20px; font-size: 0.8rem; margin-bottom: 25px; }
-p { opacity: 0.9; line-height: 1.8; font-size: 1rem; margin-bottom: 35px; }
-.btn {
-padding: 16px 45px; background: #fff; color: #764ba2; text-decoration: none;
-border-radius: 100px; font-weight: 600; transition: 0.4s; display: inline-block;
-}
-.btn:hover { transform: scale(1.1); background: #764ba2; color: #fff; }
+    body {
+        height: 100vh; display: flex; justify-content: center; align-items: center;
+        background: radial-gradient(circle at top left, #667eea, #764ba2);
+        overflow: hidden; perspective: 1000px;
+    }
+
+    /* 动态背景光斑 */
+    .bg-glow {
+        position: absolute; width: 600px; height: 600px;
+        background: rgba(255, 255, 255, 0.1); filter: blur(100px);
+        border-radius: 50%; z-index: 1;
+        animation: drift 15s infinite alternate ease-in-out;
+    }
+    @keyframes drift {
+        from { transform: translate(-30%, -30%) rotate(0deg); }
+        to { transform: translate(30%, 30%) rotate(360deg); }
+    }
+
+    /* 细腻的 3D 玻璃卡片 */
+    .glass-card {
+        position: relative; z-index: 10; width: 90%; max-width: 440px;
+        padding: 60px 40px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+        border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 45px;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        text-align: center; color: #fff;
+        transition: transform 0.2s ease-out;
+        transform-style: preserve-3d;
+    }
+
+    h1 { font-size: 2.6rem; margin-bottom: 20px; font-weight: 300; letter-spacing: 4px; text-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    
+    .tag { 
+        display: inline-block; padding: 6px 18px; 
+        background: rgba(255,255,255,0.2); border-radius: 25px; 
+        font-size: 0.85rem; margin-bottom: 30px; letter-spacing: 1px;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    p { opacity: 0.9; line-height: 2; font-size: 1.05rem; margin-bottom: 40px; font-weight: 300; }
+    
+    /* 2026 旗舰流光按钮 */
+    .btn {
+        position: relative;
+        padding: 18px 55px;
+        background: #fff;
+        color: #764ba2;
+        text-decoration: none;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        overflow: hidden;
+        display: inline-block;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        z-index: 5;
+    }
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(118, 75, 162, 0.2), transparent);
+        transition: all 0.6s;
+    }
+
+    .btn:hover {
+        transform: scale(1.1) translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        background: #fff;
+    }
+
+    .btn:hover::before { left: 100%; }
+
+    .btn:active { transform: scale(0.95); }
+
+    /* 响应式适配 */
+    @media (max-width: 600px) {
+        .glass-card { padding: 45px 25px; }
+        h1 { font-size: 2.2rem; }
+    }
 </style>
 </head>
 <body>
-<div class="glass-card">
+<div class="bg-glow"></div>
+<div class="glass-card" id="card">
 <div class="tag">AI HRBP · 2026</div>
 <h1>WINNIE</h1>
 <p>连接 AI 潜能与人力智慧
@@ -45,5 +112,14 @@ border-radius: 100px; font-weight: 600; transition: 0.4s; display: inline-block;
 构建细腻流畅的职场未来</p>
 <a href="#" class="btn">立即探索</a>
 </div>
+
+<script>
+    const card = document.getElementById('card');
+    document.addEventListener('mousemove', (e) => {
+        const x = (window.innerWidth / 2 - e.pageX) / 20;
+        const y = (window.innerHeight / 2 - e.pageY) / 20;
+        card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+    });
+</script>
 </body>
 </html>
