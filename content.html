@@ -6,7 +6,7 @@
     <title>2026 组织进化蓝图 | Winnie</title>
     <style>
         /* 核心审美：极简、通透、Yahei UI */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft YaHei UI", sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft YaHei UI", "微软雅黑", sans-serif; }
         
         body {
             min-height: 100vh;
@@ -22,7 +22,6 @@
         .header h1 { font-weight: 300; letter-spacing: 5px; font-size: 2rem; margin-bottom: 10px; }
         .header .line { width: 50px; height: 3px; background: #fff; margin: 0 auto; opacity: 0.5; }
 
-        /* 矩阵容器：PC端三列，手机端单列 */
         .matrix-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -31,7 +30,6 @@
             max-width: 1200px;
         }
 
-        /* 磨砂玻璃卡片 */
         .module-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(25px);
@@ -50,17 +48,64 @@
             box-shadow: 0 25px 50px rgba(0,0,0,0.2);
         }
 
-        /* 模块标题与标签 */
         .mod-title { font-size: 1.4rem; font-weight: 600; margin-bottom: 15px; color: #fff; }
         .mod-tag { 
             display: inline-block; padding: 4px 12px; background: rgba(255,255,255,0.2); 
             border-radius: 8px; font-size: 0.85rem; margin-bottom: 25px; color: #eee;
         }
 
-        /* 定位与金句 */
         .positioning { font-size: 1.1rem; color: #e0e0e0; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
         .positioning b { color: #fff; font-weight: 600; }
 
-        /* 任务清单 */
         .task-list { list-style: none; flex-grow: 1; }
-        .task-list li { margin-bottom: 18px; line-height: 1.6; font-size: 0.95rem; opacity: 0.9; position: relative; padding-left: 20px;
+        .task-list li { margin-bottom: 18px; line-height: 1.6; font-size: 0.95rem; opacity: 0.9; position: relative; padding-left: 20px; }
+        .task-list li::before { content: "•"; position: absolute; left: 0; color: #fff; }
+
+        .output-box {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px dashed rgba(255,255,255,0.3);
+            font-size: 0.9rem;
+        }
+        .output-label { display: block; font-size: 0.75rem; opacity: 0.6; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .output-text { color: #fff; font-weight: 600; line-height: 1.5; }
+
+        .back-nav { margin-top: 60px; text-decoration: none; color: rgba(255,255,255,0.5); font-size: 0.9rem; transition: 0.3s; }
+        .back-nav:hover { color: #fff; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>2026 组织进化蓝图</h1>
+        <div class="line"></div>
+    </div>
+
+    <div class="matrix-container">
+        
+        <div class="module-card">
+            <div class="mod-title">专业基建 (深度)</div>
+            <div class="mod-tag">突破单点：智能化数据流重构</div>
+            <div class="positioning">复杂规则的 <b>“翻译官”</b></div>
+            <ul class="task-list">
+                <li><b>解码规则：</b>将人力指标体系转化为底层业务字典。</li>
+                <li><b>封装逻辑：</b>提炼五步诊断指令，实现极速管理洞察。</li>
+                <li><b>全线开源：</b>提炼四步法则，跨业务线输出标准能力。</li>
+            </ul>
+            <div class="output-box">
+                <span class="output-label">核心产出</span>
+                <p class="output-text">高质量管理洞察批量化生产</p>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="mod-title">组织激活 (厚度)</div>
+            <div class="mod-tag">激活全盘：跨级带教与实战破局</div>
+            <div class="positioning">梯队阵型的 <b>“操盘手”</b></div>
+            <ul class="task-list">
+                <li><b>打破板结：</b>引入跨级辅导，盘活高阶专家管理动能。</li>
+                <li><b>实战检验：</b>建立双向评估机制，新老力量同台述职。</li>
+                <li><b>夯实底座：</b>智能化探索植入转正必答，倒逼业务落地。</li>
+            </ul>
+            <div class="output-box">
+                <span class="output-label">核心
