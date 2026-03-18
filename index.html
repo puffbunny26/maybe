@@ -1,115 +1,148 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Winnie | 2026 AI HRBP</title>
-<style>
-/* 核心审美：Yahei UI + 极致玻璃感 (HarmonyOS/VisionOS 风格) */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft YaHei UI", sans-serif; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winnie | 2026 AI HRBP</title>
+    <style>
+        /* 核心审美：Mario 极简蓝、HarmonyOS 级通透、Yahei UI */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft YaHei UI", "微软雅黑", sans-serif; }
+        
+        body {
+            height: 100vh;
+            /* 模拟 Mario 官网的微网格 + 极简蓝背景 */
+            background-color: #f8f9fa;
+            background-image: 
+                radial-gradient(circle at 100% 0%, rgba(0, 82, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(0, 82, 255, 0.05) 0%, transparent 50%),
+                linear-gradient(rgba(0,0,0,.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-    body {
-        height: 100vh; display: flex; justify-content: center; align-items: center;
-        background: radial-gradient(circle at top left, #667eea, #764ba2);
-        overflow: hidden; perspective: 1000px;
-    }
+        /* 顶部 Logo 标识 */
+        .top-brand {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: 1px;
+        }
+        .top-brand span { color: #0052ff; }
 
-    /* 动态背景光斑 */
-    .bg-glow {
-        position: absolute; width: 600px; height: 600px;
-        background: rgba(255, 255, 255, 0.1); filter: blur(100px);
-        border-radius: 50%; z-index: 1;
-        animation: drift 15s infinite alternate ease-in-out;
-    }
-    @keyframes drift {
-        from { transform: translate(-30%, -30%) rotate(0deg); }
-        to { transform: translate(30%, 30%) rotate(360deg); }
-    }
+        /* 核心互动卡片 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 40px;
+            padding: 60px 50px;
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            animation: float 6s ease-in-out infinite;
+        }
 
-    /* 细腻的 3D 玻璃卡片 */
-    .glass-card {
-        position: relative; z-index: 10; width: 90%; max-width: 440px;
-        padding: 60px 40px;
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
-        border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 45px;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-        text-align: center; color: #fff;
-        transition: transform 0.2s ease-out;
-        transform-style: preserve-3d;
-    }
+        .tag {
+            background: rgba(0, 82, 255, 0.1);
+            color: #0052ff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
 
-    h1 { font-size: 2.6rem; margin-bottom: 20px; font-weight: 300; letter-spacing: 4px; text-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-    
-    .tag { 
-        display: inline-block; padding: 6px 18px; 
-        background: rgba(255,255,255,0.2); border-radius: 25px; 
-        font-size: 0.85rem; margin-bottom: 30px; letter-spacing: 1px;
-        border: 1px solid rgba(255,255,255,0.2);
-    }
+        h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 10px;
+            color: #111;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
 
-    p { opacity: 0.9; line-height: 2; font-size: 1.05rem; margin-bottom: 40px; font-weight: 300; }
-    
-    /* 2026 旗舰流光按钮 */
-    .btn {
-        position: relative;
-        padding: 18px 55px;
-        background: #fff;
-        color: #764ba2;
-        text-decoration: none;
-        border-radius: 100px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        overflow: hidden;
-        display: inline-block;
-        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        z-index: 5;
-    }
+        p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
 
-    .btn::before {
-        content: '';
-        position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
-        background: linear-gradient(120deg, transparent, rgba(118, 75, 162, 0.2), transparent);
-        transition: all 0.6s;
-    }
+        /* 极简流光按钮 */
+        .explore-btn {
+            display: inline-block;
+            background: #0052ff;
+            color: #fff;
+            padding: 18px 50px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+            box-shadow: 0 10px 30px rgba(0, 82, 255, 0.2);
+        }
 
-    .btn:hover {
-        transform: scale(1.1) translateY(-5px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        background: #fff;
-    }
+        .explore-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 82, 255, 0.3);
+        }
 
-    .btn:hover::before { left: 100%; }
+        /* 按钮内部流光 */
+        .explore-btn::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg);
+            animation: shine 4s infinite;
+        }
 
-    .btn:active { transform: scale(0.95); }
+        /* 动画定义 */
+        @keyframes shine {
+            0% { left: -100%; transition: 0s; }
+            20% { left: 100%; transition: 0.6s; }
+            100% { left: 100%; transition: 0.6s; }
+        }
 
-    /* 响应式适配 */
-    @media (max-width: 600px) {
-        .glass-card { padding: 45px 25px; }
-        h1 { font-size: 2.2rem; }
-    }
-</style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; letter-spacing: 5px; }
+            .glass-card { padding: 40px 30px; }
+        }
+    </style>
 </head>
 <body>
-<div class="bg-glow"></div>
-<div class="glass-card" id="card">
-<div class="tag">AI HRBP · 2026</div>
-<h1>WINNIE</h1>
-<p>连接 AI 潜能与人力智慧<br>在数字化转型中<br>构建细腻、敏捷、有温度的未来</p>
-<a href="content.html" class="btn">开始探索</a>
-</div>
 
-<script>
-    const card = document.getElementById('card');
-    document.addEventListener('mousemove', (e) => {
-        const x = (window.innerWidth / 2 - e.pageX) / 20;
-        const y = (window.innerHeight / 2 - e.pageY) / 20;
-        card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-    });
-</script>
+    <div class="top-brand">WINNIE | <span>2026</span></div>
+
+    <div class="glass-card">
+        <div class="tag">AI HRBP · 2026</div>
+        <h1>WINNIE</h1>
+        <p>连接 AI 潜能与人力智慧<br>在数字化转型中<br>构建细腻、敏捷、有温度的未来</p>
+        
+        <a href="content.html" class="explore-btn">开始探索</a>
+    </div>
+
 </body>
 </html>
