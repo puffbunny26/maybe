@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 述职沉淀 | Winnie</title>
+    <title>2026 晋升述职 | Winnie</title>
     <style>
         /* 核心审美：飞书生产力美学 + ISUX 极简居中 */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft YaHei UI", "微软雅黑", sans-serif; scroll-behavior: smooth; }
@@ -15,14 +15,14 @@
             position: fixed; top: 0; width: 100%; height: 80px;
             background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             display: flex; justify-content: center; align-items: center;
-            z-index: 1000; transition: 0.3s;
+            z-index: 1000; border-bottom: 1px solid #eff0f1;
         }
-        nav { display: flex; gap: 40px; }
+        nav { display: flex; gap: 30px; }
         nav a { 
-            text-decoration: none; color: #646a73; font-size: 0.95rem; font-weight: 400; 
+            text-decoration: none; color: #646a73; font-size: 0.9rem; font-weight: 500; 
             transition: 0.3s; position: relative;
         }
-        nav a:hover, nav a.active { color: #0052ff; font-weight: 600; }
+        nav a:hover, nav a.active { color: #0052ff; }
         nav a.active::after {
             content: ""; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
             width: 4px; height: 4px; background: #0052ff; border-radius: 50%;
@@ -58,7 +58,7 @@
         .plus-icon {
             position: absolute; top: 45px; right: 40px; width: 36px; height: 36px;
             background: #f5f7fa; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; font-weight: 300; transition: 0.4s; cursor: pointer; color: #646a73;
+            font-size: 1.5rem; font-weight: 300; transition: 0.4s; color: #646a73; pointer-events: none;
         }
         .project-card.active .plus-icon { transform: rotate(45deg); background: #0052ff; color: #fff; }
 
@@ -67,7 +67,7 @@
             max-height: 0; opacity: 0; transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden; visibility: hidden;
         }
-        .project-card.active .full-detail { max-height: 8000px; opacity: 1; visibility: visible; border-top: 1px solid #dee0e3; margin-top: 32px; padding-top: 32px; }
+        .project-card.active .full-detail { max-height: 10000px; opacity: 1; visibility: visible; border-top: 1px solid #dee0e3; margin-top: 32px; padding-top: 32px; }
 
         /* 飞书式正文排版 */
         .content-block { margin-bottom: 48px; }
@@ -78,35 +78,25 @@
         .text-p { font-size: 1.05rem; color: #1f2329; margin-bottom: 20px; white-space: pre-wrap; }
         .text-p b { color: #000; font-weight: 600; }
 
-        /* 蓝色成果框 */
-        .value-box { 
-            background: rgba(0, 82, 255, 0.04); padding: 32px; border-radius: 8px; border-left: 4px solid #0052ff; 
-            margin: 32px 0;
-        }
-        .value-box p { color: #1f2329; font-weight: 600; font-size: 1.1rem; }
-
-        /* 反思区域 */
+        /* 强调框与反思 */
+        .value-box { background: rgba(0, 82, 255, 0.04); padding: 32px; border-radius: 8px; border-left: 4px solid #0052ff; margin: 32px 0; color: #1f2329; font-weight: 600; font-size: 1.1rem; }
         .ref-box { background: #f5f7fa; padding: 28px; border-radius: 8px; margin: 32px 0; font-style: italic; color: #646a73; }
 
         footer { text-align: center; padding: 100px 0; color: #8f959e; font-size: 0.9rem; border-top: 1px solid #eff0f1; }
 
-        @media (max-width: 1000px) {
-            .panorama-grid { grid-template-columns: 1fr; }
-            nav { gap: 15px; }
-            nav a { font-size: 0.8rem; }
-        }
+        @media (max-width: 1000px) { .panorama-grid { grid-template-columns: 1fr; } nav { display: none; } }
     </style>
 </head>
 <body>
 
-    <header id="mainNav">
-        <nav>
-            <a href="#l2-1" class="nav-item">L2-翻译官</a>
-            <a href="#l2-2" class="nav-item">L2-石榴计划</a>
-            <a href="#l2-3" class="nav-item">L2-资产封装</a>
-            <a href="#l1-1" class="nav-item">L1-新人训</a>
-            <a href="#l1-2" class="nav-item">L1-工位管理</a>
-            <a href="#l1-3" class="nav-item">L1-中台BP</a>
+    <header>
+        <nav id="topNav">
+            <a href="#l2-1">L2-翻译官</a>
+            <a href="#l2-2">L2-石榴计划</a>
+            <a href="#l2-3">L2-资产封装</a>
+            <a href="#l1-1">L1-新人训</a>
+            <a href="#l1-2">L1-工位管理</a>
+            <a href="#l1-3">L1-中台BP</a>
         </nav>
     </header>
 
@@ -114,167 +104,14 @@
         
         <div class="hero">
             <h1>系统化思维驱动：从单点支撑到资产沉淀</h1>
-            <p>连接 AI 潜能与人力智慧。在数字化转型中，致力于将每一次管理动作转化为可进化、可复用的数字资产。</p>
+            <p>基于 HRBP 视角，深度整合 AI 提效逻辑与组织管理闭环。拒绝碎片化执行，致力于将每一次管理动作转化为可进化、可复用的数字资产。</p>
             
             <div class="panorama-grid">
                 <div class="p-card" onclick="jumpTo('l2-1')">
                     <span class="level-tag">Level 2 / 深度</span>
                     <h3>专业基建</h3>
-                    <p>复杂规则解码，AI 报告效能提升 600%。</p>
+                    <p>做 AI 翻译官，报告由小时级压至 10 分钟。</p>
                 </div>
                 <div class="p-card" onclick="jumpTo('l2-2')">
                     <span class="level-tag">Level 2 / 厚度</span>
                     <h3>组织激活</h3>
-                    <p>“10+6”柔性激发，砸实 AI 实战准入标准。</p>
-                </div>
-                <div class="p-card" onclick="jumpTo('l2-3')">
-                    <span class="level-tag">Level 2 / 广度</span>
-                    <h3>系统资产</h3>
-                    <p>SOP 资产化封装，拉升交付底线至 80 分+。</p>
-                </div>
-                <div class="p-card" onclick="jumpTo('l1-1')">
-                    <span class="level-tag" style="color:#646a73;">Level 1 / 过往</span>
-                    <h3>校招新人训</h3>
-                    <p>数据驱动迭代，NPS 从 70 跃升至 93.2。</p>
-                </div>
-                <div class="p-card" onclick="jumpTo('l1-2')">
-                    <span class="level-tag" style="color:#646a73;">Level 1 / 过往</span>
-                    <h3>工位精益管理</h3>
-                    <p>千万级成本节约，荣获公司成本样板间奖。</p>
-                </div>
-                <div class="p-card" onclick="jumpTo('l1-3')">
-                    <span class="level-tag" style="color:#646a73;">Level 1 / 过往</span>
-                    <h3>中台研发BP</h3>
-                    <p>孵化 16 个 Agent，打造创新激励三部曲。</p>
-                </div>
-            </div>
-        </div>
-
-        <div id="l2-1" class="project-section">
-            <div class="project-card" id="card-l2-1">
-                <div class="plus-icon" onclick="toggleCard('card-l2-1')">+</div>
-                <div class="card-header" onclick="toggleCard('card-l2-1')">
-                    <h2>做 HR 复杂体系与 AI 的“翻译官”</h2>
-                    <p class="key-point">Level 2 核心项目</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">背景与痛点</span>
-                        <p class="text-p"><b>“被动与模糊”的双重夹击：</b>一线的BP同学常处于被动通知状态。底层数据口径（如689留存等）易改动，事态紧急下难给深度业务解释。</p>
-                        <p class="text-p"><b>“算力”消耗过大：</b>月度复盘极其消耗精力，手搓数据1小时是常态。</p>
-                        <p class="text-p"><b>AI 落地的“空心化”门槛：</b>懂AI的人多，但能将内部规则转化为大模型指令的人很少，导致模型产生幻觉或空话。</p>
-                    </div>
-                    <div class="content-block">
-                        <span class="block-label">策略、决策与协同</span>
-                        <p class="text-p"><b>角色定位（规则翻译官）：</b>系统解码公司指标体系（T序列矩阵、3S/5G模型），翻译成模型可读取的“底层业务字典”。</p>
-                        <p class="text-p"><b>结构化封装：</b>强制模型遵循“摘要➜概览➜结构现状➜流动分析➜交叉比对”五步框架，确保精准识别深层问题。</p>
-                        <p class="text-p"><b>知识开源：</b>在人力线内部开源《实操指南》，总结“喂-建-固-调”四步法则，让缺乏数据基础的伙伴快速上手。</p>
-                    </div>
-                    <div class="value-box">
-                        <p>成果：报告撰写压缩至10分钟级；2份沉淀进入官方职级标准参考文档；跨界启发 C 招与主站 HR 团队。</p>
-                    </div>
-                    <div class="ref-box">
-                        反思：生成深度洞察只是起点，未来需追踪报告是否真正推动了管理者的实质调整动作。
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="l2-2" class="project-section">
-            <div class="project-card" id="card-l2-2">
-                <div class="plus-icon" onclick="toggleCard('card-l2-2')">+</div>
-                <div class="card-header" onclick="toggleCard('card-l2-2')">
-                    <h2>“10+6（石榴计划）”与 AI 梯队建设</h2>
-                    <p class="key-point">Level 2 核心项目</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">策略与决策</span>
-                        <p class="text-p"><b>【阵型重塑】跨级带教：</b>推出“10+6”计划，安排E10专家直接辅导E6校招生，用“带教杠杆”柔和激发高阶专家的管理动能。</p>
-                        <p class="text-p"><b>【高标准验收】双向评估：</b>策划“师生同台述职”，制定《导师汇报模板》与《应届生汇报模板》，使辅导质量可见、可衡量。</p>
-                        <p class="text-p"><b>【机制升级】AI 深度植入：</b>将AI考察设为转正必答题，在答辩现场针对 Agent 重构可能性抛出深度问题，倒逼沉浸式研究。</p>
-                    </div>
-                    <div class="value-box">
-                        <p>成果：E10盘活腰部力量，11位校招平稳落地（2人获A绩效）；成功将AI能力砸实成转正准入标准。</p>
-                    </div>
-                    <div class="ref-box">
-                        反思：跨级带教需更精细的预期管理。下一步探索将AI贡献量化，关联卓越工程积分等客观数据。
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="l2-3" class="project-section">
-            <div class="project-card" id="card-l2-3">
-                <div class="plus-icon" onclick="toggleCard('card-l2-3')">+</div>
-                <div class="card-header" onclick="toggleCard('card-l2-3')">
-                    <h2>将非标业务动作转化为可复用的标准 SOP</h2>
-                    <p class="key-point">Level 2 核心项目</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">核心动作</span>
-                        <p class="text-p"><b>凡我做过必留资产：</b>致力于把个人跑通的经验变成任何人拿来就能用的“公共资料”。</p>
-                        <p class="text-p"><b>流程拆解：</b>针对晋升评审、新人训等项目，沉淀精确到时间点与对接人的“全景排期表”。</p>
-                        <p class="text-p"><b>AI 减负：</b>引入“生成-延展-分发-提取”自动化链路，将物料筹备变为简单的“填空题”。</p>
-                    </div>
-                    <div class="value-box">
-                        <p>成果：沉淀资产形成了跨周期长尾价值；拉升团队交付底线至80分+，将精力释放回业务诊断本身。</p>
-                    </div>
-                    <div class="ref-box">
-                        反思：计划从文本指导向“系统化封装”演进（Skills/Agent）。同时防范工具带来的路径依赖。
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="l1-1" class="project-section">
-            <div class="project-card" id="card-l1-1">
-                <div class="plus-icon" onclick="toggleCard('card-l1-1')">+</div>
-                <div class="card-header" onclick="toggleCard('card-l1-1')">
-                    <h2>商业化事业部校招新人训 (项目主R)</h2>
-                    <p class="key-point" style="color:#646a73;">Level 1 历程回顾</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">背景与痛点</span>
-                        <p class="text-p">过往24届通用型课程占比大。在降本增效背景下，25届强化实战指向性，缩短线下课时，聚焦核心业务技能。</p>
-                    </div>
-                    <div class="content-block">
-                        <span class="block-label">实施策略</span>
-                        <p class="text-p"><b>【学-练-战】串联：</b>重构“原生素材PK赛”，通过商审课程与冠军分享，加速新人业务融入。</p>
-                        <p class="text-p"><b>【数据驱动】迭代：</b>建立NPS核心反馈闭环，使NPS从70.0跃升至93.2，负面反馈归零。</p>
-                        <p class="text-p"><b>【创新降本】：</b>将降本结余转化为自主团建经费，实现合规、成本、体验的三赢。</p>
-                    </div>
-                    <div class="value-box">
-                        <p>价值：组织方人效提升100%（2人完成往年4人工作）；沉淀极简协同样板，创造培训体验标杆。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="l1-2" class="project-section">
-            <div class="project-card" id="card-l1-2">
-                <div class="plus-icon" onclick="toggleCard('card-l1-2')">+</div>
-                <div class="card-header" onclick="toggleCard('card-l1-2')">
-                    <h2>事业部工位精益管理 (项目主R)</h2>
-                    <p class="key-point" style="color:#646a73;">Level 1 历程回顾</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">策略动作</span>
-                        <p class="text-p"><b>数据驱动决策：</b>建立全景视图，让浪费“可视化”，并纳入月度管理看板。</p>
-                        <p class="text-p"><b>精细化运营：</b>制定 SOP，包括申请标准、二维码追溯与回收机制；推行“柔性引导”推广共享工位。</p>
-                        <p class="text-p"><b>价值传递：</b>建立双轨成本模型，将动作转化为财务语言，展示潜在千万级节约价值。</p>
-                    </div>
-                    <div class="value-box">
-                        <p>价值：回收457个闲置工位，直接节约398.82万；预估年化节约1555.56万；获公司《成本管理样板间》奖。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="l1-3" class="project-section">
-            <div class="project-card" id="card-l1-3">
-                <div class="plus-icon" onclick="toggleCard('card-l1-3')">+</div>
-                <div
