@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>述职沉淀 | Winnie 2026</title>
     <style>
-        /* 核心审美：极简、通透、平滑比例拉伸 */
+        /* 核心审美：2026 极简、通透、非弹性平滑感 */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft YaHei UI", "微软雅黑", sans-serif; }
         
         body {
@@ -16,100 +16,115 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden;
+            overflow: hidden; /* 防止页面整体滚动，保持仪表盘质感 */
         }
 
-        .header { text-align: center; margin-bottom: 40px; }
-        .header h1 { font-weight: 300; letter-spacing: 1px; font-size: 1.5rem; line-height: 1.5; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { font-weight: 300; letter-spacing: 1px; font-size: 1.5rem; line-height: 1.4; }
         .header .line { width: 30px; height: 2px; background: #fff; margin: 15px auto; opacity: 0.3; }
 
-        /* 矩阵容器：PC端横向拉伸，手机端堆叠 */
+        /* 画轴容器 */
         .matrix-container {
             display: flex;
             width: 100%;
-            max-width: 1400px;
-            height: 750px; /* 固定高度确保切换时的稳定性 */
+            max-width: 1500px;
+            height: 75vh; 
             gap: 15px;
-            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* 基础卡片 */
+        /* 模块基础样式 */
         .module-card {
-            flex: 1;
+            flex: 1; /* 初始平分 */
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 32px;
+            border-radius: 30px;
             padding: 40px 30px;
             cursor: pointer;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             position: relative;
         }
 
+        /* 悬浮微光 */
         .module-card:hover { background: rgba(255, 255, 255, 0.15); }
 
-        /* 激活状态：占据 70% 空间 */
+        /* 激活状态：占据绝大部分空间 */
         .module-card.active {
-            flex: 4;
+            flex: 8; 
             background: rgba(255, 255, 255, 0.18);
             cursor: default;
         }
 
-        /* 头部信息 */
-        .mod-header { min-width: 280px; margin-bottom: 30px; }
-        .mod-title { font-size: 1.4rem; font-weight: 600; margin-bottom: 12px; white-space: nowrap; }
+        /* 未激活状态（当有其他卡片激活时）：极度收窄 */
+        .matrix-container.has-active .module-card:not(.active) {
+            flex: 0.6;
+            opacity: 0.6;
+            padding: 40px 15px;
+        }
+
+        /* 标题排版 */
+        .mod-header { min-width: 300px; margin-bottom: 30px; transition: opacity 0.3s; }
+        .mod-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 12px; white-space: nowrap; }
         .mod-focus { font-size: 0.85rem; opacity: 0.8; background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 8px; display: inline-block; line-height: 1.4; }
 
-        /* 正文内容：带滚动条防止溢出 */
+        /* 只有在激活时才显示的详情区域 */
         .mod-detail {
             opacity: 0;
-            transform: translateX(30px);
-            transition: all 0.5s ease;
-            transition-delay: 0.2s;
-            pointer-events: none;
+            display: none;
             overflow-y: auto;
             padding-right: 15px;
             scrollbar-width: thin;
             scrollbar-color: rgba(255,255,255,0.2) transparent;
         }
 
-        .active .mod-detail { opacity: 1; transform: translateX(0); pointer-events: auto; }
+        .active .mod-detail {
+            display: block;
+            opacity: 1;
+            animation: fadeIn 0.8s forwards;
+            animation-delay: 0.3s;
+        }
 
-        /* 正文样式排版 */
-        .section-box { margin-bottom: 35px; }
-        .section-label { font-size: 0.75rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 长文内容样式排版 */
+        .content-section { margin-bottom: 40px; }
+        .section-title { font-size: 0.75rem; opacity: 0.5; letter-spacing: 2px; margin-bottom: 15px; display: block; border-left: 2px solid rgba(255,255,255,0.3); padding-left: 10px; }
         
-        .positioning-text { font-size: 1.2rem; font-weight: 500; margin-bottom: 20px; border-left: 3px solid #fff; padding-left: 15px; }
+        .brief-intro { font-size: 1.15rem; font-weight: 500; margin-bottom: 25px; line-height: 1.5; color: #fff; }
 
-        .task-list { list-style: none; }
-        .task-list li { margin-bottom: 18px; line-height: 1.8; font-size: 0.95rem; opacity: 0.95; padding-left: 20px; position: relative; }
-        .task-list li::before { content: "•"; position: absolute; left: 0; opacity: 0.5; }
-        .task-list li b { color: #fff; font-weight: 600; }
+        .detail-list { list-style: none; }
+        .detail-list li { margin-bottom: 18px; line-height: 1.8; font-size: 0.95rem; opacity: 0.95; padding-left: 20px; position: relative; }
+        .detail-list li::before { content: "•"; position: absolute; left: 0; opacity: 0.5; }
+        .detail-list li b { color: #fff; font-weight: 600; }
 
-        /* 产出展示 */
-        .output-box { margin-top: 10px; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px dashed rgba(255,255,255,0.2); }
-        .output-text { font-size: 1.1rem; font-weight: 600; color: #fff; }
+        /* 成果展示框 */
+        .value-box { padding: 25px; background: rgba(255,255,255,0.06); border-radius: 20px; border: 1px dashed rgba(255,255,255,0.2); }
+        .value-text { font-size: 1rem; font-weight: 600; line-height: 1.6; }
 
-        /* 反思部分 */
-        .reflection-text { font-size: 0.9rem; opacity: 0.8; line-height: 1.7; font-style: italic; }
+        .reflection-box { font-size: 0.9rem; opacity: 0.8; line-height: 1.7; font-style: italic; background: rgba(0,0,0,0.1); padding: 20px; border-radius: 15px; }
 
-        .back-nav { margin-top: 40px; text-decoration: none; color: rgba(255,255,255,0.4); font-size: 0.85rem; transition: 0.3s; }
-        .back-nav:hover { color: #fff; }
+        .appendix-link { margin-top: 20px; font-size: 0.85rem; color: #667eea; background: #fff; display: inline-block; padding: 5px 15px; border-radius: 20px; text-decoration: none; font-weight: 600; }
+
+        /* 导航与返回 */
+        .footer-nav { margin-top: auto; padding-top: 30px; }
+        .back-link { text-decoration: none; color: rgba(255,255,255,0.4); font-size: 0.85rem; transition: 0.3s; }
+        .back-link:hover { color: #fff; }
 
         /* 滚动条美化 */
         .mod-detail::-webkit-scrollbar { width: 4px; }
         .mod-detail::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
 
+        /* 移动端逻辑：改为垂直堆叠 */
         @media (max-width: 1000px) {
+            body { overflow-y: auto; }
             .matrix-container { flex-direction: column; height: auto; }
-            .module-card { min-height: 100px; flex: none; }
-            .module-card.active { min-height: 80vh; }
-            .mod-detail { transform: translateY(20px); }
-            .active .mod-detail { transform: translateY(0); }
+            .module-card { min-height: 100px; flex: none !important; }
+            .module-card.active { min-height: 85vh; }
         }
     </style>
 </head>
@@ -120,97 +135,113 @@
         <div class="line"></div>
     </div>
 
-    <div class="matrix-container">
+    <div class="matrix-container" id="container">
         
-        <div class="module-card active" onclick="activateCard(this)">
+        <div class="module-card" onclick="handleCardClick(this)">
             <div class="mod-header">
                 <div class="mod-title">专业基建 (深度)</div>
                 <div class="mod-focus">从单兵破局到全线开源——做 HR 复杂体系与 AI 的“翻译官”</div>
             </div>
             <div class="mod-detail">
-                <div class="section-box">
-                    <p class="positioning-text">复杂规则的“翻译官”</p>
-                    <ul class="task-list">
-                        <li><b>解码规则：</b> 将人力指标体系（如 T 序列人才矩阵、3S/5G模型等）系统解码，翻译成模型能精准读取的“底层业务字典”，解决认知盲区。</li>
-                        <li><b>封装逻辑：</b> 封装五步提示词架构（摘要-概览-结构现状-流动分析-交叉比对），并锚定数据驱动的输出边界，确保洞察深度。</li>
-                        <li><b>全线开源：</b> 整理并开源《三十分钟带你与对话式生成数据分析报告》实操指南，沉淀“喂数据-建对话-固知识-调输出”的四步法则。</li>
+                <div class="content-section">
+                    <span class="section-title">角色定位与策略</span>
+                    <p class="brief-intro">复杂规则的“翻译官”</p>
+                    <ul class="detail-list">
+                        <li><b>解码规则：</b> 将人力指标体系（如 T 序列人才矩阵等）系统解码，翻译成大模型能精准读取的“底层业务字典”。</li>
+                        <li><b>结构化封装：</b> 强制模型遵循“摘要➜概览➜结构现状➜流动分析➜投入度交叉比对”五步框架，确保洞察精准。</li>
+                        <li><b>知识开源：</b> 总结出“喂数据➜建对话➜固知识➜调试输出”的四步法则，整理实操指南并在内部开源。</li>
                     </ul>
                 </div>
-                <div class="section-box">
-                    <span class="section-label">业务价值</span>
-                    <div class="output-box">
-                        <p class="output-text">极致效能跃迁：报告撰写工作由“小时计”压缩至“10分钟级”；2份日常沉淀获官方采纳并进入职级迭代参考文档。</p>
+                <div class="content-section">
+                    <span class="section-title">项目成果与业务价值</span>
+                    <div class="value-box">
+                        <p class="value-text">成功将数据报告撰写由小时级压缩至10分钟；2份日常沉淀获官方采纳进入职级标准迭代参考文档；跨界启发了C招与主站HR团队。</p>
                     </div>
                 </div>
-                <div class="section-box">
-                    <span class="section-label">深度反思</span>
-                    <p class="reflection-text">目前解决了“写”的痛点，但生成洞察只是起点，未来需追踪报告是否真正推动了管理闭环。此外，需建立动态更新的“公共指标定义库”，降低人工维护成本。</p>
+                <div class="content-section">
+                    <span class="section-title">不足与反思</span>
+                    <p class="reflection-box">未来需从“提速”转向“管理动作闭环”，追踪报告是否促成了管理者的实质调整。同时需探索建立“公共指标字典库”，降低人工喂料成本。</p>
                 </div>
+                <a href="#" class="appendix-link">附录：30分钟与AI对话生成分析报告</a>
             </div>
         </div>
 
-        <div class="module-card" onclick="activateCard(this)">
+        <div class="module-card" onclick="handleCardClick(this)">
             <div class="mod-header">
                 <div class="mod-title">组织激活 (厚度)</div>
-                <div class="mod-focus">从人才盘点到阵型激活——业务中台“10+6（石榴计划）”与 AI 梯队建设</div>
+                <div class="mod-focus">业务中台“10+6（石榴计划）”与 AI 梯队建设</div>
             </div>
             <div class="mod-detail">
-                <div class="section-box">
-                    <p class="positioning-text">梯队阵型的“操盘手”</p>
-                    <ul class="task-list">
-                        <li><b>打破板结：</b> 推出“10+6”柔性激发模式，赋予 E10 专家带领顶尖新人的责任，通过“带教杠杆”柔和唤醒高职级骨干的管理动能。</li>
-                        <li><b>实战检验：</b> 重构转正与阶段性汇报流程，策划“师生同台述职”，强制要求汇报模板量化评估，使辅导质量可见、可衡量。</li>
-                        <li><b>夯实底座：</b> 将 AI 能力从加分项转为转正考核的“必答题”，在答辩环节强制要求师生展示对 Agent 逻辑或模型可靠性的指导与应用。</li>
+                <div class="content-section">
+                    <span class="section-title">策略、决策与协同</span>
+                    <p class="brief-intro">梯队阵型的“操盘手”</p>
+                    <ul class="detail-list">
+                        <li><b>跨级带教：</b> 推出“10+6”计划，由 E10 专家直接辅导 E6 校招生，用柔性杠杆激发高职级专家的管理意识。</li>
+                        <li><b>双向评估：</b> 策划师生全体同台述职，制定《导师汇报模板》与《应届生汇报模板》，使辅导质量可衡量。</li>
+                        <li><b>AI 沉浸植入：</b> 将 AI 能力考察设为转正考核必答题，倒逼师生在日常场景中重构 Agent 思维。</li>
                     </ul>
                 </div>
-                <div class="section-box">
-                    <span class="section-label">业务价值</span>
-                    <div class="output-box">
-                        <p class="output-text">梯队双赢：盘活了团队腰部力量，11位校招生平稳落地，其中2位获得年度 A 绩效；在智能插件等业务场景实现 AI 实战落地。</p>
+                <div class="content-section">
+                    <span class="section-title">项目成果与业务价值</span>
+                    <div class="value-box">
+                        <p class="value-text">骨干激活：E10 获得了新的管理成就感。新人破局：11 位校招生平稳落地，其中 2 位获得年度 A 绩效。AI 基因在团队实战中砸实。</p>
                     </div>
                 </div>
-                <div class="section-box">
-                    <span class="section-label">深度反思</span>
-                    <p class="reflection-text">跨级带教需更精细的“预期管理”。下一步，应将 AI 考核从定性交流转向更量化的客观指标，如关联卓越工程积分或内部 Agent 搭建数量。</p>
+                <div class="content-section">
+                    <span class="section-title">不足与反思</span>
+                    <p class="reflection-box">跨级带教需更精细的预期管理。下一步探索将 AI 贡献量化，关联卓越工程积分或内部 Agent 搭建数量，形成严密价值闭环。</p>
                 </div>
+                <a href="#" class="appendix-link">附录：10+6（石榴）培养成果阶段汇报</a>
             </div>
         </div>
 
-        <div class="module-card" onclick="activateCard(this)">
+        <div class="module-card" onclick="handleCardClick(this)">
             <div class="mod-header">
                 <div class="mod-title">系统资产 (广度)</div>
                 <div class="mod-focus">打破“重复造轮子”——将非标业务动作转化为可复用的标准 SOP</div>
             </div>
             <div class="mod-detail">
-                <div class="section-box">
-                    <p class="positioning-text">组织记忆的“架构师”</p>
-                    <ul class="task-list">
-                        <li><b>化繁为简：</b> 针对晋升评审、新人训等高复杂度项目，提炼出精确到时间点与对接人的“全景排期表”与“评审手册”。</li>
-                        <li><b>流程轻量：</b> 引入 AI 工具链，实现“主题生成➜视觉延展➜消息分发➜会议纪要”的自动化链路，大幅降低项目筹备的重体力消耗。</li>
-                        <li><b>长尾复用：</b> 致力于“凡做过必留资产”，将个人经验封装为任何人拿来就能用的“公共资料”，沉淀多份至今仍在被高频调用的指南。</li>
+                <div class="content-section">
+                    <span class="section-title">核心动作与策略</span>
+                    <p class="brief-intro">组织记忆的“架构师”</p>
+                    <ul class="detail-list">
+                        <li><b>凡做过必留资产：</b> 致力于将个人跑通的经验转化为公共资料。</li>
+                        <li><b>流程拆解：</b> 针对校招新人训、评审等高复杂度项目，沉淀精确到时间点与对接人的“全景排期表”与“操作手册”。</li>
+                        <li><b>AI 减负：</b> 引入自动化链路，实现“主题生成➜视觉延展➜消息分发➜体提取纪要”的操作闭环，将物料筹备变为“填空题”。</li>
                     </ul>
                 </div>
-                <div class="section-box">
-                    <span class="section-label">业务价值</span>
-                    <div class="output-box">
-                        <p class="output-text">拉升团队交付底线：使新接手复杂项目的同事也能迅速达到 80分+ 交付标准，将人力资源精力释放回高价值的业务诊断本身。</p>
+                <div class="content-section">
+                    <span class="section-title">项目成果与业务价值</span>
+                    <div class="value-box">
+                        <p class="value-text">拉升团队交付底线：使新接手复杂项目的同事也能迅速达到 80分+ 交付标准，将精力释放回高价值的业务与组织诊断。沉淀 SOP 至今仍被高频复用。</p>
                     </div>
                 </div>
-                <div class="section-box">
-                    <span class="section-label">深度反思</span>
-                    <p class="reflection-text">未来计划将静态 SOP 向更深度的“系统化封装”演进，上架 Skill/Agent。同时需警惕“路径依赖”，确保效率跃迁不以牺牲评估的严谨性为代价。</p>
+                <div class="content-section">
+                    <span class="section-title">不足与反思</span>
+                    <p class="reflection-box">计划从静态 SOP 向更深度的“系统化封装”演进。同时防范工具便捷化带来的路径依赖，确保效率跃迁不以牺牲评估严谨性为代价。</p>
                 </div>
             </div>
         </div>
 
     </div>
 
-    <a href="index.html" class="back-nav">← 返回主页</a>
+    <div class="footer-nav">
+        <a href="index.html" class="back-link">← 返回主页</a>
+    </div>
 
     <script>
-        function activateCard(card) {
+        function handleCardClick(card) {
+            const container = document.getElementById('container');
+            
+            // 如果点击的是已经激活的，则不做任何事（或者收起，根据喜好）
+            if (card.classList.contains('active')) return;
+
+            // 移除所有 active 状态
             document.querySelectorAll('.module-card').forEach(c => c.classList.remove('active'));
+            
+            // 激活当前卡片并给容器加标记
             card.classList.add('active');
+            container.classList.add('has-active');
         }
     </script>
 
