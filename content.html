@@ -19,62 +19,82 @@
         }
 
         .header { text-align: center; margin-bottom: 40px; max-width: 900px; }
-        /* 针对长标题微调字号与行高 */
         .header h1 { font-weight: 300; letter-spacing: 2px; font-size: 1.6rem; line-height: 1.4; margin-bottom: 15px; }
         .header .line { width: 40px; height: 2px; background: #fff; margin: 0 auto; opacity: 0.5; }
 
-        /* 响应式矩阵容器：自动适配设备宽度 */
+        /* 响应式矩阵容器：确保任何设备完整显示 */
         .matrix-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
             width: 100%;
             max-width: 1200px;
         }
 
-        /* 磨砂玻璃卡片 */
+        /* 交互式磨砂卡片 */
         .module-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 30px;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .module-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.15); }
+        .module-card:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-5px); }
 
-        /* 标题区 */
-        .mod-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 8px; }
-        .mod-focus { font-size: 0.9rem; opacity: 0.7; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 6px; display: inline-block; }
+        /* 模块常显部分 */
+        .mod-header { margin-bottom: 0; transition: margin 0.3s; }
+        .module-card.active .mod-header { margin-bottom: 20px; }
 
-        /* 定位区 */
+        .mod-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* 展开指示器 (+) */
+        .mod-title::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.4s;
+            opacity: 0.6;
+        }
+        .module-card.active .mod-title::after { transform: rotate(45deg); opacity: 1; }
+
+        .mod-focus { font-size: 0.85rem; opacity: 0.7; background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 6px; display: inline-block; }
+
+        /* 隐藏的内容区域 */
+        .mod-content {
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            pointer-events: none;
+        }
+        .module-card.active .mod-content {
+            max-height: 800px;
+            opacity: 1;
+            pointer-events: auto;
+            margin-top: 10px;
+        }
+
         .positioning { font-size: 1.1rem; font-weight: 400; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); color: #fff; }
 
-        /* 任务列表 */
-        .task-list { list-style: none; flex-grow: 1; }
+        .task-list { list-style: none; margin-bottom: 25px; }
         .task-list li { margin-bottom: 15px; line-height: 1.6; font-size: 0.95rem; opacity: 0.9; padding-left: 18px; position: relative; }
         .task-list li::before { content: "•"; position: absolute; left: 0; color: #fff; }
 
-        /* 核心产出区 */
-        .output-box {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px dashed rgba(255,255,255,0.2);
-        }
-        .output-label { display: block; font-size: 0.7rem; opacity: 0.5; margin-bottom: 6px; letter-spacing: 1px; }
-        .output-text { font-size: 0.95rem; font-weight: 600; line-height: 1.4; color: #fff; }
+        /* 核心产出区域：去掉了文字标签 */
+        .output-box { padding-top: 20px; border-top: 1px dashed rgba(255,255,255,0.2); }
+        .output-text { font-size: 1rem; font-weight: 600; line-height: 1.4; color: #fff; letter-spacing: 0.5px; }
 
-        .back-nav { margin-top: 40px; text-decoration: none; color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        .back-nav { margin-top: 40px; text-decoration: none; color: rgba(255,255,255,0.4); font-size: 0.85rem; transition: 0.3s; }
         .back-nav:hover { color: #fff; }
 
         @media (max-width: 600px) {
-            body { padding: 30px 15px; }
             .header h1 { font-size: 1.3rem; }
-            .matrix-container { gap: 20px; }
+            .matrix-container { gap: 15px; }
+            .module-card { padding: 25px; }
         }
     </style>
 </head>
@@ -87,54 +107,70 @@
 
     <div class="matrix-container">
         
-        <div class="module-card">
-            <div class="mod-title">专业基建（深度探索）</div>
-            <div class="mod-focus">突破单点：智能化数据流重构</div>
-            <div class="positioning">复杂规则的“翻译官”</div>
-            <ul class="task-list">
-                <li><b>解码规则：</b> 将人力指标体系转化为底层业务字典。</li>
-                <li><b>封装逻辑：</b> 提炼五步诊断指令，实现极速管理洞察。</li>
-                <li><b>全线开源：</b> 提炼四步法则，跨业务线输出标准能力。</li>
-            </ul>
-            <div class="output-box">
-                <span class="output-label">核心产出</span>
-                <p class="output-text">高质量管理洞察批量化生产</p>
+        <div class="module-card" onclick="toggleCard(this)">
+            <div class="mod-header">
+                <div class="mod-title">专业基建（深度）</div>
+                <div class="mod-focus">突破单点：智能化数据流重构</div>
+            </div>
+            <div class="mod-content">
+                <div class="positioning">复杂规则的“翻译官”</div>
+                <ul class="task-list">
+                    <li><b>解码规则：</b> 将人力指标体系转化为底层业务字典。</li>
+                    <li><b>封装逻辑：</b> 提炼五步诊断指令，实现极速管理洞察。</li>
+                    <li><b>全线开源：</b> 提炼四步法则，跨业务线输出标准能力。</li>
+                </ul>
+                <div class="output-box">
+                    <p class="output-text">高质量管理洞察批量化生产</p>
+                </div>
             </div>
         </div>
 
-        <div class="module-card">
-            <div class="mod-title">组织激活（厚度探索）</div>
-            <div class="mod-focus">激活全盘：跨级带教与实战破局</div>
-            <div class="positioning">梯队阵型的“操盘手”</div>
-            <ul class="task-list">
-                <li><b>打破板结：</b> 引入跨级辅导，盘活高阶专家管理动能。</li>
-                <li><b>实战检验：</b> 建立双向评估机制，新老力量同台述职。</li>
-                <li><b>夯实底座：</b> 智能化探索植入转正必答，倒逼业务落地。</li>
-            </ul>
-            <div class="output-box">
-                <span class="output-label">核心产出</span>
-                <p class="output-text">技术团队骨干激活与新生代跃迁</p>
+        <div class="module-card" onclick="toggleCard(this)">
+            <div class="mod-header">
+                <div class="mod-title">组织激活（厚度）</div>
+                <div class="mod-focus">激活全盘：跨级带教与实战破局</div>
+            </div>
+            <div class="mod-content">
+                <div class="positioning">梯队阵型的“操盘手”</div>
+                <ul class="task-list">
+                    <li><b>打破板结：</b> 引入跨级辅导，盘活高阶专家管理动能。</li>
+                    <li><b>实战检验：</b> 建立双向评估机制，新老力量同台述职。</li>
+                    <li><b>夯实底座：</b> 智能化探索植入转正必答，倒逼业务落地。</li>
+                </ul>
+                <div class="output-box">
+                    <p class="output-text">技术团队骨干激活与新生代跃迁</p>
+                </div>
             </div>
         </div>
 
-        <div class="module-card">
-            <div class="mod-title">系统资产（广度探索）</div>
-            <div class="mod-focus">对抗内耗：非标动作资产化封装</div>
-            <div class="positioning">组织记忆的“架构师”</div>
-            <ul class="task-list">
-                <li><b>化繁为简：</b> 将复杂统筹经验拆解为极简行动清单。</li>
-                <li><b>流程轻量：</b> 引入自动化链路，大幅降低重体力消耗。</li>
-                <li><b>长尾复用：</b> 沉淀跨期复用组件，拉升团队整体交付底线。</li>
-            </ul>
-            <div class="output-box">
-                <span class="output-label">核心产出</span>
-                <p class="output-text">建立跨越周期的高质交付基准线</p>
+        <div class="module-card" onclick="toggleCard(this)">
+            <div class="mod-header">
+                <div class="mod-title">系统资产（广度）</div>
+                <div class="mod-focus">对抗内耗：非标动作资产化封装</div>
+            </div>
+            <div class="mod-content">
+                <div class="positioning">组织记忆的“架构师”</div>
+                <ul class="task-list">
+                    <li><b>化繁为简：</b> 将复杂统筹经验拆解为极简行动清单。</li>
+                    <li><b>流程轻量：</b> 引入自动化链路，大幅降低重体力消耗。</li>
+                    <li><b>长尾复用：</b> 沉淀跨期复用组件，拉升团队整体交付底线。</li>
+                </ul>
+                <div class="output-box">
+                    <p class="output-text">建立跨越周期的高质交付基准线</p>
+                </div>
             </div>
         </div>
 
     </div>
 
     <a href="index.html" class="back-nav">← 返回首页</a>
+
+    <script>
+        function toggleCard(card) {
+            // 切换当前卡片的展开状态
+            card.classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
