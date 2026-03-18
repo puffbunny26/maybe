@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 晋升述职 | Winnie</title>
+    <title>2026 述职沉淀 | Winnie</title>
     <style>
         /* 核心审美：飞书生产力美学 + ISUX 极简居中 */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft YaHei UI", "微软雅黑", sans-serif; scroll-behavior: smooth; }
@@ -13,7 +13,7 @@
         /* ISUX 风格：居中悬浮导航 */
         header {
             position: fixed; top: 0; width: 100%; height: 80px;
-            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             display: flex; justify-content: center; align-items: center;
             z-index: 1000; border-bottom: 1px solid #eff0f1;
         }
@@ -33,7 +33,7 @@
         .hero h1 { font-size: 2.6rem; font-weight: 600; color: #1f2329; margin-bottom: 24px; letter-spacing: -1px; }
         .hero p { font-size: 1.1rem; color: #646a73; max-width: 800px; margin: 0 auto 60px; }
 
-        /* 6 宫格全景网格 */
+        /* 全景网格入口 */
         .panorama-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .p-card { 
             background: #f5f7fa; padding: 30px; border-radius: 12px; transition: 0.4s; 
@@ -48,70 +48,18 @@
         .project-section { max-width: 900px; margin: 0 auto 60px; padding: 0 20px; }
         .project-card {
             background: #ffffff; border-radius: 16px; border: 1px solid #dee0e3;
-            padding: 40px; position: relative; transition: 0.5s;
+            padding: 40px; position: relative; transition: 0.5s; cursor: pointer;
         }
-        .card-header { cursor: pointer; padding-right: 60px; }
-        .card-header h2 { font-size: 1.7rem; font-weight: 600; color: #1f2329; margin-bottom: 16px; }
-        .card-header .key-point { color: #0052ff; font-size: 1rem; font-weight: 500; }
+        .project-card:hover { border-color: #0052ff; }
+        
+        .card-header { padding-right: 60px; }
+        .card-header h2 { font-size: 1.6rem; font-weight: 600; color: #1f2329; margin-bottom: 16px; line-height: 1.4; }
+        .card-header .key-point { color: #0052ff; font-size: 0.95rem; font-weight: 500; }
 
-        /* iOS 级旋转加号 */
+        /* 极简旋转加号 */
         .plus-icon {
             position: absolute; top: 45px; right: 40px; width: 36px; height: 36px;
             background: #f5f7fa; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; font-weight: 300; transition: 0.4s; color: #646a73; pointer-events: none;
+            font-size: 1.5rem; font-weight: 300; transition: 0.4s; color: #646a73;
         }
-        .project-card.active .plus-icon { transform: rotate(45deg); background: #0052ff; color: #fff; }
-
-        /* 详情展开 */
-        .full-detail {
-            max-height: 0; opacity: 0; transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden; visibility: hidden;
-        }
-        .project-card.active .full-detail { max-height: 10000px; opacity: 1; visibility: visible; border-top: 1px solid #dee0e3; margin-top: 32px; padding-top: 32px; }
-
-        /* 飞书式正文排版 */
-        .content-block { margin-bottom: 48px; }
-        .block-label { 
-            display: inline-block; padding: 4px 12px; background: #eff0f1; border-radius: 4px;
-            font-size: 0.8rem; font-weight: 600; color: #646a73; margin-bottom: 20px;
-        }
-        .text-p { font-size: 1.05rem; color: #1f2329; margin-bottom: 20px; white-space: pre-wrap; }
-        .text-p b { color: #000; font-weight: 600; }
-
-        /* 强调框与反思 */
-        .value-box { background: rgba(0, 82, 255, 0.04); padding: 32px; border-radius: 8px; border-left: 4px solid #0052ff; margin: 32px 0; color: #1f2329; font-weight: 600; font-size: 1.1rem; }
-        .ref-box { background: #f5f7fa; padding: 28px; border-radius: 8px; margin: 32px 0; font-style: italic; color: #646a73; }
-
-        footer { text-align: center; padding: 100px 0; color: #8f959e; font-size: 0.9rem; border-top: 1px solid #eff0f1; }
-
-        @media (max-width: 1000px) { .panorama-grid { grid-template-columns: 1fr; } nav { display: none; } }
-    </style>
-</head>
-<body>
-
-    <header>
-        <nav id="topNav">
-            <a href="#l2-1">L2-翻译官</a>
-            <a href="#l2-2">L2-石榴计划</a>
-            <a href="#l2-3">L2-资产封装</a>
-            <a href="#l1-1">L1-新人训</a>
-            <a href="#l1-2">L1-工位管理</a>
-            <a href="#l1-3">L1-中台BP</a>
-        </nav>
-    </header>
-
-    <div class="container">
-        
-        <div class="hero">
-            <h1>系统化思维驱动：从单点支撑到资产沉淀</h1>
-            <p>基于 HRBP 视角，深度整合 AI 提效逻辑与组织管理闭环。拒绝碎片化执行，致力于将每一次管理动作转化为可进化、可复用的数字资产。</p>
-            
-            <div class="panorama-grid">
-                <div class="p-card" onclick="jumpTo('l2-1')">
-                    <span class="level-tag">Level 2 / 深度</span>
-                    <h3>专业基建</h3>
-                    <p>做 AI 翻译官，报告由小时级压至 10 分钟。</p>
-                </div>
-                <div class="p-card" onclick="jumpTo('l2-2')">
-                    <span class="level-tag">Level 2 / 厚度</span>
-                    <h3>组织激活</h3>
+        .project-card.active .
