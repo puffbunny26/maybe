@@ -28,7 +28,7 @@
         /* Hero 4 块全景区 */
         .hero { max-width: 1100px; margin: 160px auto 80px; padding: 0 20px; text-align: center; }
         .hero h1 { font-size: 2.6rem; font-weight: 600; color: #1f2329; margin-bottom: 24px; letter-spacing: -1px; }
-        .hero p { font-size: 1.1rem; color: #646a73; max-width: 800px; margin: 0 auto 60px; }
+        .hero p { font-size: 1.1rem; color: #646a73; max-width: 850px; margin: 0 auto 60px; text-align: justify; text-justify: inter-word; }
 
         .panorama-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
         .p-card { 
@@ -69,14 +69,28 @@
         /* 飞书正文排版 */
         .content-block { margin-bottom: 48px; }
         .block-label { display: inline-block; padding: 4px 12px; background: #eff0f1; border-radius: 4px; font-size: 0.8rem; font-weight: 600; color: #646a73; margin-bottom: 20px; }
-        .text-p { font-size: 1.05rem; color: #1f2329; margin-bottom: 20px; white-space: pre-wrap; }
+        .text-p { font-size: 1.05rem; color: #1f2329; margin-bottom: 20px; white-space: pre-wrap; text-align: justify; }
         .text-p b { color: #000; font-weight: 600; }
 
-        /* 重点高亮 */
-        .highlight-num { color: #ff5722; font-weight: 700; font-size: 1.1rem; }
+        /* 重点数字高亮 */
+        .highlight-num { color: #ff5722; font-weight: 700; font-size: 1.15rem; }
 
         .value-box { background: rgba(0, 82, 255, 0.04); padding: 32px; border-radius: 8px; border-left: 4px solid #0052ff; margin: 32px 0; font-weight: 600; font-size: 1.05rem; }
         .ref-box { background: #f5f7fa; padding: 28px; border-radius: 8px; margin: 32px 0; font-style: italic; color: #646a73; border-left: 4px solid #dee0e3; }
+
+        /* 返回首页悬浮按钮 */
+        .back-to-top {
+            position: fixed; bottom: 40px; right: 40px; width: 52px; height: 52px;
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid #eff0f1; border-radius: 12px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; cursor: pointer; transition: 0.4s;
+            z-index: 2000; opacity: 0; visibility: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .back-to-top:hover { background: #0052ff; border-color: #0052ff; transform: translateY(-5px); box-shadow: 0 8px 24px rgba(0, 82, 255, 0.2); }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-icon { font-size: 1.2rem; color: #646a73; transition: 0.3s; }
+        .back-text { font-size: 0.6rem; color: #646a73; margin-top: -2px; transition: 0.3s; }
+        .back-to-top:hover .back-icon, .back-to-top:hover .back-text { color: #ffffff; }
 
         footer { text-align: center; padding: 100px 0; color: #8f959e; font-size: 0.9rem; border-top: 1px solid #eff0f1; }
 
@@ -97,145 +111,156 @@
     <div class="container">
         
         <div class="hero">
-            <h1>效能架构师：从“单兵闭环”到“资产沉淀”</h1>
-            <p>我是王尔君。一个正在试图通过“SOP 封装”与“AI Agent 调教”，完成进化并交付确定性价值的“智械小龙虾”。引力向下是自然，引体向上是选择。</p>
+            <h1>持续进化，持续迭代</h1>
+            <p>
+                拒绝碎片的事务堆砌，致力于通过“数据探针”穿透治理、通过“逻辑重构”重组阵型、通过“AI 杠杆”实现资产封装。
+            </p>
             
             <div class="panorama-grid">
                 <div class="p-card" onclick="jumpTo('pro-1')">
                     <span class="level-tag">DATA DRIVEN</span>
-                    <h3>01 全局视角</h3>
-                    <p>数据铡刀驱动，透视资源治理。降本增效获《成本管理样板间》。</p>
+                    <h3>01 数据探针</h3>
+                    <p>数据铡刀下的精益运营，实现确定性降本与闭环。</p>
                 </div>
                 <div class="p-card" onclick="jumpTo('pro-2')">
-                    <span class="level-tag">TALENT SUPPLY</span>
+                    <span class="level-tag">DYNAMIC TALENT</span>
                     <h3>02 人才破局</h3>
-                    <p>存量错位重组。10+6 结对救赎，动态止损清淤。</p>
+                    <p>存量错位重组，在动态跑动中精准止损清淤。</p>
                 </div>
                 <div class="p-card" onclick="jumpTo('pro-3')">
-                    <span class="level-tag">MOTIVATION</span>
-                    <h3>03 促激发</h3>
-                    <p>先过体验关，再建动力源。新人训成本缩减 26%，NPS 83.13。</p>
+                    <span class="level-tag">ENGINE DESIGN</span>
+                    <h3>03 动力引擎</h3>
+                    <p>高质量场域+利益激励，重构大型项目人效比。</p>
                 </div>
                 <div class="p-card" onclick="jumpTo('pro-4')">
-                    <span class="level-tag">AI EMPOWER</span>
+                    <span class="level-tag">AI EVOLUTION</span>
                     <h3>04 技能升维</h3>
-                    <p>自研 30+ Agent。SPARK 公式布道，实现管理动作“零损耗复制”。</p>
+                    <p>自研 30+ Agent。将个人经验封装为数字资产。</p>
                 </div>
             </div>
         </div>
 
         <div id="pro-1" class="project-section">
-            <div class="project-card" onclick="this.classList.toggle('active')">
+            <div class="project-card" onclick="toggleCard(this)">
                 <div class="plus-icon">+</div>
                 <div class="card-header">
                     <h2>01 全局视角：数据驱动组织管理迈向精细化运营</h2>
-                    <p class="key-point">核心逻辑：资源数据化 ➜ 效能探针化 ➜ 治理机制化</p>
+                    <p class="key-point">关键词：透视组织治理、数据铡刀、机制交付</p>
                 </div>
                 <div class="full-detail">
                     <div class="content-block">
                         <span class="block-label">业务背景与破局逻辑</span>
-                        <p class="text-p"><b>深水区挑战：</b> 商业化与电商处于“一手交业绩、一手控成本”阶段。HRBP 核心视角为<b>“透视组织治理”</b>。</p>
-                        <p class="text-p"><b>破局初衷：</b> 将资源数据转化为“效能探针”，通过盘点物理与时间资源，倒推解决深层异常。</p>
+                        <p class="text-p"><b>战略诉求：</b> 商业化与电商事业部正处于“一手交业绩、一手控成本”的深水区。面对庞大的基数，精细化运营是必答题。</p>
+                        <p class="text-p"><b>HRBP 破局点：</b> 区别于财务（控预算）和行政（管资产），HRBP 核心视角是<b>“透视组织治理”</b>。将资源数据转化为“效能探针”，通过盘点物理与时间资源，倒推解决团队深层异常。</p>
                     </div>
                     <div class="content-block">
                         <span class="block-label">核心策略与管理落地</span>
-                        <p class="text-p"><b>资源提效（工位治理）：</b> 建立双轨成本模型，将低效工位损耗折算为预估 <span class="highlight-num">1555 万元/年</span>。确立“110% 弹性标尺”，标准化 SOP 移交常态化运转。</p>
-                        <p class="text-p"><b>组织绩效（红绿灯基建）：</b> 独立承接健康度校验，敲定“前 30% 绿、后 30% 红”水位线。对触底管理者实施<b>年终奖实质扣罚</b>，打破“仅供参考”惯性。</p>
-                        <p class="text-p"><b>成本管理（交叉诊断）：</b> 沉淀三费与工时交叉诊断模型。锁定“低工时+高应酬”异常靶点，为汰换与合规提供数据支撑。</p>
+                        <p class="text-p"><b>资源提效（工位精益）：</b> 建立双轨成本模型，将低效工位清晰折算为预估 <span class="highlight-num">1555 万元/年</span>。确立“编制数×110%”弹性标尺，实现从“单点破局”到“常态化机制交付”。</p>
+                        <p class="text-p"><b>组织绩效（红绿灯基建）：</b> 独立承接 T1 保留率、0-3 小管幅等指标校验，确保异常可定位。敲定“前 30% 绿、后 30% 红”水位线，对触底管理者实施<b>年终奖实质扣罚</b>，强制建立利益强挂钩。</p>
+                        <p class="text-p"><b>成本管理（穿透诊断）：</b> 沉淀“三费”与“极端工时”交叉诊断模型。精准锁定“低工时+高绩效”或“低工时+极高交际费”等异常节点，为低效汰换提供无可辩驳的数据支柱。</p>
                     </div>
                     <div class="value-box">
-                        战绩：首期回收 457 个工位，成本节约 <span class="highlight-num">398.82 万元</span>。模式获《成本管理样板间》分享，NPS 达 <span class="highlight-num">88.89</span>。
+                        战绩：首期回收 457 个工位，产生等效成本节约 <span class="highlight-num">398.82 万元</span>。模式获《成本管理样板间》分享，NPS 达 <span class="highlight-num">88.89</span>。
                     </div>
                     <div class="ref-box">
-                        反思：从“数据铡刀”向“组织诊断”升级。数据红灯不应止于惩罚，更应作为诊断探针，深入业务链路分层归因。
+                        反思：数据红灯终局不应止于惩罚，更应作为诊断探针。需警惕“唯数据论”，实现从“数据铡刀”向“组织诊断”的视角升级。
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="pro-2" class="project-section">
-            <div class="project-card" onclick="this.classList.toggle('active')">
+            <div class="project-card" onclick="toggleCard(this)">
                 <div class="plus-icon">+</div>
                 <div class="card-header">
                     <h2>02 组织重塑：技术团队人才供应链破局策略</h2>
-                    <p class="key-point">核心逻辑：存量错位重组，在动态跑动中精准止损</p>
+                    <p class="key-point">关键词：存量重组、10+6 结对、动态止损</p>
                 </div>
                 <div class="full-detail">
                     <div class="content-block">
                         <span class="block-label">业务背景与破局逻辑</span>
-                        <p class="text-p"><b>“沙漏型”断层：</b> 顶部 E10 专家淤积（重技术轻管理），底部校招生（11人）激增。成本受限下，必须向存量要 ROI。</p>
-                        <p class="text-p"><b>双向救赎：</b> 将 E10 晋升瓶颈转化为“管理练兵场”，让新生代承接 AI 战略实战。</p>
+                        <p class="text-p"><b>沙漏型断层：</b> 顶部 E10 专家淤积（重技术轻管理），底部校招生（11 人）创历史新高。争取增量预算无解，必须向存量要 ROI。</p>
+                        <p class="text-p"><b>错位重构：</b> 确立“E10 × E6 跨级结对”救赎策略。将 E10 的晋升瓶颈转化为“管理练兵场”，让新生代成为承接 AI 战略的实战生力军。</p>
                     </div>
                     <div class="content-block">
-                        <span class="block-label">核心策略与实战落地</span>
-                        <p class="text-p"><b>精准对位：</b> 三维度全盘扫描 E10+ 骨干，完成“人-岗-角色”精准匹配。</p>
-                        <p class="text-p"><b>动态止损（高光）：</b> 实战中识别“带教意愿漂移”。对行动躺平且输出负向价值观的节点<b>果断协商离职</b>，阻断组织毒化，即时为新人重配优质导师。</p>
-                        <p class="text-p"><b>责任闭环：</b> 实施“徒弟拿产出，师傅背评价”。管理责任强挂钩业务结果。</p>
+                        <span class="block-label">核心策略与管理落地</span>
+                        <p class="text-p"><b>精准对位：</b> 三维度深度扫描 E10+ 骨干，完成“人-岗-角色”对位匹配。</p>
+                        <p class="text-p"><b>动态止损（核心含金量）：</b> 实战中识别“带教意愿漂移”。针对行动躺平、输出负向价值观的节点<b>果断启动协商离职</b>，阻断组织毒化，并即时为校招重配优质导师。</p>
+                        <p class="text-p"><b>双向验收：</b> 实施“徒弟拿产出，师傅背评价”。以 AI 应用成效倒推评价导师质量，管理责任从表态转向实质结果。</p>
                     </div>
                     <div class="value-box">
-                        战绩：曾受波及的校招生迅速企稳成长为主力。沉淀《10+6 培养成果汇报》，形成适配技术工种的梯队建设范式。
+                        战绩：及时阻断感染源，受波及校招生成长为核心主力。沉淀《10+6 培养成果汇报》，形成适配技术工种的梯队建设范式。
                     </div>
                     <div class="ref-box">
-                        反思：动态管理是常态。及时止损是保护高潜人才、捍卫机制可信度的底线动作。框架可复用，但度量衡需定制。
+                        反思：动态管理是常态。及时止损是保护好苗子、捍卫机制可信度的底线。管理逻辑可复用，但“度量衡”必须定制。
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="pro-3" class="project-section">
-            <div class="project-card" onclick="this.classList.toggle('active')">
+            <div class="project-card" onclick="toggleCard(this)">
                 <div class="plus-icon">+</div>
                 <div class="card-header">
                     <h2>03 促激发：全局项目运营与高效能激发方法论</h2>
-                    <p class="key-point">核心公式：促激发 = 高质量能量场域 + 人才意愿度激发</p>
+                    <p class="key-point">核心公式：场域体验(爽/新/趣) + 动力设计(利益绑定) = 行为转化</p>
                 </div>
                 <div class="full-detail">
                     <div class="content-block">
-                        <span class="block-label">策略重构与实战落地</span>
-                        <p class="text-p"><b>场域重构（新人训）：</b> 结构性脱水。3 天排期压至 2 天不占周末。SOP 驱动“1正式+1协同”单兵闭环。实战 PK 驱动角色闭环。</p>
-                        <p class="text-p"><b>动力设计（AI 激励）：</b> 构建 L1-L5 微光积分体系。引入<b>“睡后积分”</b>杠杆，驱动专家从“消耗算力”向“创造资产”转型。</p>
-                        <p class="text-p"><b>认知渗透：</b> 教师节“AI 三行诗”包装技能拉练，促成新同学对 AI 工具 <span class="highlight-num">100% 实际调用</span>。</p>
+                        <span class="block-label">高质量场域：重塑用户体验</span>
+                        <p class="text-p"><b>结构性脱水（新人训）：</b> 排期 3 天压至 2 天不占周末。凭借 SOP 将 4 人协作压缩为“1 正式+1 协同”单兵闭环。通过“商机 PK/原生素材 PK”驱动认知转化。</p>
+                        <p class="text-p"><b>隐性价值显性化：</b> 1024/感恩节植入“解密/加鸡腿”等极简爽感机制。为技术极客提供精准的情绪按摩与身份认同。</p>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">精密动力设计：激发主动进化</span>
+                        <p class="text-p"><b>认知破冰：</b> 教师节“AI 三行诗”战役，将严肃技能拉练包装为情感表达，驱动新同学对 AI 工具 <span class="highlight-num">100% 实际调用</span>。</p>
+                        <p class="text-p"><b>利益耦合（AI 激励）：</b> 构建 L1-L5 微光积分体系。引入<b>“睡后积分”</b>杠杆，驱动专家从“消耗算力”向“创造资产”转型。</p>
                     </div>
                     <div class="value-box">
-                        战绩：新人训成本同比<b>下降 26%</b>，人均节约 650 元。NPS 达 <span class="highlight-num">83.13</span>（卓越水平）。交付 22 门自助学习导航。
+                        战绩：新人训成本同比<b>缩减 26%</b>，人均节约 650 元。整体 NPS 达 <span class="highlight-num">83.13</span>（卓越水平）。交付 22 门自助学习导航。
                     </div>
                     <div class="ref-box">
-                        反思：先过体验关，再建动力源。只有将组织战略与个体利益/情感诉求精确耦合，认知才能转化为行为。
+                        反思：促激发本质是“先过体验关，再建动力源”。枯燥是认知的绝缘体。只有当个人利益与战略诉求精确耦合，认知才能转化为行为。
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="pro-4" class="project-section">
-            <div class="project-card" onclick="this.classList.toggle('active')">
+            <div class="project-card" onclick="toggleCard(this)">
                 <div class="plus-icon">+</div>
                 <div class="card-header">
-                    <h2>04 技能升维：AI + 我”的全场景赋能与进化</h2>
-                    <p class="key-point">核心壁垒：会提问、会判断、会转化</p>
+                    <h2>04 技能升维：“AI + 我”的全场景赋能与进化</h2>
+                    <p class="key-point">核心壁垒：定义问题(提问) + 审视逻辑(判断) + 交付价值(转化)</p>
                 </div>
                 <div class="full-detail">
                     <div class="content-block">
-                        <span class="block-label">核心策略与实战落地</span>
-                        <p class="text-p"><b>我即产品：</b> 构建覆盖全周期的 <span class="highlight-num">20+ Agent</span> 矩阵。数据分析耗时从 1 小时缩减至 10 分钟。</p>
-                        <p class="text-p"><b>我即讲师：</b> 总结 <span class="highlight-num">SPARK 提问公式</span>。将 AI 应用从个人偏好转化为组织效能，实现管理资产化与“去经验化”。</p>
+                        <span class="block-label">我即产品：从“疲于奔命”到“系统沉淀”</span>
+                        <p class="text-p"><b>Agent 矩阵：</b> 自研 <span class="highlight-num">20+ AI Agent</span>。涵盖 JD 写作、绩效评语、三费分析、Doc 画图。实现数据分析耗时从 1 小时压缩至 10 分钟。</p>
+                        <p class="text-p"><b>方法论沉淀：</b> 总结 <span class="highlight-num">SPARK 提问公式</span>。将个人应用偏好通过讲师赋能模式转化为组织效能，实现管理经验的“资产化”与“去经验化”。</p>
                     </div>
                     <div class="content-block">
-                        <span class="block-label">未来进化方向</span>
-                        <p class="text-p">1. <b>自身改造：</b> 持续进行工作流资产化沉淀，夯实交付底盘。</p>
-                        <p class="text-p">2. <b>关键人才智能化：</b> 提取专家隐性经验封装 Agent，打造效能标杆。</p>
-                        <p class="text-p">3. <b>生产关系改造：</b> 深入业务真实的生产链，探索生产关系提效。</p>
+                        <span class="block-label">未来规划：引体向上的进化选择</span>
+                        <p class="text-p">1. <b>自身工作流改造：</b> 夯实交付底盘，将非标实战经验固化为自动化流程。</p>
+                        <p class="text-p">2. <b>专家经验智能化：</b> 提取关键人才的隐性经验进行智能封装，打造效能标杆。</p>
+                        <p class="text-p">3. <b>生产关系改造：</b> 深入业务真实生产链，帮助业务看清卡点并进行关系重构。</p>
                     </div>
                     <div class="value-box">
-                        思考：脑力与算力解耦。由 HRBP 定义规则边界与灰度决策，由 AI 负责数据推演与执行，实现“动态清淤”。
+                        思考：AI 时代 HRBP 应实现“脑力与算力解耦”。由 HR 定义规则边界，由 AI 负责数据推演，实现组织阵型的“动态清淤”。
                     </div>
                 </div>
             </div>
         </div>
 
         <footer>
-            <p>© 2026 Winnie · 效能架构师 · 凡我做过，必留资产</p>
+            <p>© 2026 Winnie · 凡我做过，必留资产 · 引体向上，是我的选择 </p>
         </footer>
 
+    </div>
+
+    <div id="backToTop" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <span class="back-icon">↑</span>
+        <span class="back-text">一键归位</span>
     </div>
 
     <script>
@@ -248,15 +273,36 @@
             // 延迟一点开启 active，增加仪式感
             setTimeout(() => {
                 const card = target.querySelector('.project-card');
-                if (card) card.classList.add('active');
-            }, 500);
+                if (card) {
+                    document.querySelectorAll('.project-card').forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                }
+            }, 600);
         }
 
-        // 导航自动高亮
+        // 点击展开/收起逻辑
+        function toggleCard(card) {
+            const isActive = card.classList.contains('active');
+            // 如果点击的是已经展开的，就收起；否则收起其他，展开自己
+            document.querySelectorAll('.project-card').forEach(c => c.classList.remove('active'));
+            if (!isActive) card.classList.add('active');
+        }
+
+        // 导航自动高亮 & 悬浮按钮显隐
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('.project-section');
             const navItems = document.querySelectorAll('#topNav a');
+            const backBtn = document.getElementById('backToTop');
             let current = "";
+
+            // 按钮显隐
+            if (window.pageYOffset > 400) {
+                backBtn.classList.add('visible');
+            } else {
+                backBtn.classList.remove('visible');
+            }
+
+            // 导航高亮
             sections.forEach(s => {
                 if (window.pageYOffset >= s.offsetTop - 150) current = s.getAttribute('id');
             });
