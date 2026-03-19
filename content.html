@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 述职沉淀 | Winnie</title>
+    <title>2026 述职空间 | Winnie</title>
     <style>
         /* 核心审美：飞书生产力美学 + ISUX 极简居中 */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft YaHei UI", "微软雅黑", sans-serif; scroll-behavior: smooth; }
@@ -17,23 +17,20 @@
             display: flex; justify-content: center; align-items: center;
             z-index: 1000; border-bottom: 1px solid #eff0f1;
         }
-        nav { display: flex; gap: 30px; }
+        nav { display: flex; gap: 20px; }
         nav a { 
-            text-decoration: none; color: #646a73; font-size: 0.9rem; font-weight: 500; 
+            text-decoration: none; color: #646a73; font-size: 0.85rem; font-weight: 500; 
+            background: #f5f7fa; padding: 6px 14px; border-radius: 8px;
             transition: 0.3s; position: relative;
         }
-        nav a:hover, nav a.active { color: #0052ff; }
-        nav a.active::after {
-            content: ""; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
-            width: 4px; height: 4px; background: #0052ff; border-radius: 50%;
-        }
+        nav a:hover, nav a.active { color: #ffffff; background: #0052ff; }
 
         /* Hero 全景区 */
         .hero { max-width: 1100px; margin: 160px auto 80px; padding: 0 20px; text-align: center; }
         .hero h1 { font-size: 2.6rem; font-weight: 600; color: #1f2329; margin-bottom: 24px; letter-spacing: -1px; }
         .hero p { font-size: 1.1rem; color: #646a73; max-width: 800px; margin: 0 auto 60px; }
 
-        /* 全景网格入口 */
+        /* 6 宫格全景网格 */
         .panorama-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .p-card { 
             background: #f5f7fa; padding: 30px; border-radius: 12px; transition: 0.4s; 
@@ -45,7 +42,7 @@
         .p-card p { font-size: 0.85rem; color: #8f959e; line-height: 1.5; }
 
         /* 项目详情区 */
-        .project-section { max-width: 900px; margin: 0 auto 60px; padding: 0 20px; }
+        .project-section { max-width: 950px; margin: 0 auto 60px; padding: 0 20px; }
         .project-card {
             background: #ffffff; border-radius: 16px; border: 1px solid #dee0e3;
             padding: 40px; position: relative; transition: 0.5s; cursor: pointer;
@@ -53,14 +50,14 @@
         .project-card:hover { border-color: #0052ff; }
         
         .card-header { padding-right: 60px; }
-        .card-header h2 { font-size: 1.6rem; font-weight: 600; color: #1f2329; margin-bottom: 16px; line-height: 1.4; }
-        .card-header .key-point { color: #0052ff; font-size: 0.95rem; font-weight: 500; }
+        .card-header h2 { font-size: 1.7rem; font-weight: 600; color: #1f2329; margin-bottom: 16px; line-height: 1.4; }
+        .card-header .key-point { color: #0052ff; font-size: 1rem; font-weight: 500; }
 
-        /* 极简旋转加号 */
+        /* iOS 级旋转加号 */
         .plus-icon {
             position: absolute; top: 45px; right: 40px; width: 36px; height: 36px;
             background: #f5f7fa; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; font-weight: 300; transition: 0.4s; color: #646a73;
+            font-size: 1.5rem; font-weight: 300; transition: 0.4s; color: #646a73; pointer-events: none;
         }
         .project-card.active .plus-icon { transform: rotate(45deg); background: #0052ff; color: #fff; }
 
@@ -69,10 +66,7 @@
             max-height: 0; opacity: 0; transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden; visibility: hidden;
         }
-        .project-card.active .full-detail { 
-            max-height: 8000px; opacity: 1; visibility: visible; 
-            border-top: 1px solid #dee0e3; margin-top: 32px; padding-top: 32px; 
-        }
+        .project-card.active .full-detail { max-height: 12000px; opacity: 1; visibility: visible; border-top: 1px solid #dee0e3; margin-top: 32px; padding-top: 32px; }
 
         /* 飞书式正文排版 */
         .content-block { margin-bottom: 48px; }
@@ -83,7 +77,7 @@
         .text-p { font-size: 1.05rem; color: #1f2329; margin-bottom: 20px; white-space: pre-wrap; }
         .text-p b { color: #000; font-weight: 600; }
 
-        /* 蓝色成果框与反思 */
+        /* 强调框 */
         .value-box { background: rgba(0, 82, 255, 0.04); padding: 32px; border-radius: 8px; border-left: 4px solid #0052ff; margin: 32px 0; color: #1f2329; font-weight: 600; font-size: 1.1rem; }
         .ref-box { background: #f5f7fa; padding: 28px; border-radius: 8px; margin: 32px 0; font-style: italic; color: #646a73; border-left: 4px solid #dee0e3; }
 
@@ -96,12 +90,12 @@
 
     <header>
         <nav id="topNav">
-            <a href="#l2-1">L2-翻译官</a>
-            <a href="#l2-2">L2-石榴计划</a>
-            <a href="#l2-3">L2-资产封装</a>
+            <a href="#l2-1">L2-全局视角</a>
+            <a href="#l2-2">L2-人才破局</a>
+            <a href="#l2-3">L2-促激发</a>
             <a href="#l1-1">L1-新人训</a>
             <a href="#l1-2">L1-工位管理</a>
-            <a href="#l1-3">L1-中台BP</a>
+            <a href="#l1-3">L1-研发BP</a>
         </nav>
     </header>
 
@@ -109,36 +103,36 @@
         
         <div class="hero">
             <h1>系统化思维驱动：从单点支撑到资产沉淀</h1>
-            <p>连接 AI 潜能与人力智慧。在数字化转型中，致力于将每一次管理动作转化为可进化、可复用的数字资产。</p>
+            <p>基于 HRBP 视角，深度整合 AI 提效逻辑与组织管理闭环。拒绝碎片化执行，致力于将每一次管理动作转化为可复用的数字资产。</p>
             
             <div class="panorama-grid">
                 <div class="p-card" onclick="jumpTo('l2-1')">
-                    <span class="level-tag">Level 2 / 深度</span>
-                    <h3>专业基建</h3>
-                    <p>复杂规则解码，AI 报告效能提升 600%。</p>
+                    <span class="level-tag">Level 2 / 精细运营</span>
+                    <h3>全局视角</h3>
+                    <p>数据探针驱动，组织管理迈向精细化运营。</p>
                 </div>
                 <div class="p-card" onclick="jumpTo('l2-2')">
-                    <span class="level-tag">Level 2 / 厚度</span>
-                    <h3>组织激活</h3>
-                    <p>“10+6”柔性激发，砸实 AI 实战转正标准。</p>
+                    <span class="level-tag">Level 2 / 供应链</span>
+                    <h3>人才破局</h3>
+                    <p>“10+6”存量重组，破解技术梯队断层。</p>
                 </div>
                 <div class="p-card" onclick="jumpTo('l2-3')">
-                    <span class="level-tag">Level 2 / 广度</span>
-                    <h3>系统资产</h3>
-                    <p>非标动作 SOP 化，拉升团队交付底线。</p>
+                    <span class="level-tag">Level 2 / 促激发</span>
+                    <h3>方法论运营</h3>
+                    <p>逻辑重构，实现大型项目极简人效交付。</p>
                 </div>
                 <div class="p-card" onclick="jumpTo('l1-1')">
-                    <span class="level-tag" style="color:#646a73;">Level 1 / 过往</span>
+                    <span class="level-tag" style="color:#646a73;">Level 1 / 过去</span>
                     <h3>校招新人训</h3>
-                    <p>数据驱动迭代，NPS 从 70 跃升至 93.2。</p>
+                    <p>“学-练-战”闭环，NPS 跃升至 93.2。</p>
                 </div>
                 <div class="p-card" onclick="jumpTo('l1-2')">
-                    <span class="level-tag" style="color:#646a73;">Level 1 / 过往</span>
+                    <span class="level-tag" style="color:#646a73;">Level 1 / 过去</span>
                     <h3>工位精益管理</h3>
                     <p>数据驱动决策，年化预估节约 1555 万元。</p>
                 </div>
                 <div class="p-card" onclick="jumpTo('l1-3')">
-                    <span class="level-tag" style="color:#646a73;">Level 1 / 过往</span>
+                    <span class="level-tag" style="color:#646a73;">Level 1 / 过去</span>
                     <h3>中台研发 BP</h3>
                     <p>孵化 16 个 Agent，打造创新激励三部曲。</p>
                 </div>
@@ -149,23 +143,26 @@
             <div class="project-card" onclick="this.classList.toggle('active')">
                 <div class="plus-icon">+</div>
                 <div class="card-header">
-                    <h2>从单兵破局到全线开源——做 HR 复杂体系与 AI 的“翻译官”</h2>
+                    <h2>01 全局视角——以数据驱动组织管理迈向精细化运营</h2>
                     <p class="key-point">Level 2 核心沉淀</p>
                 </div>
                 <div class="full-detail">
                     <div class="content-block">
-                        <span class="block-label">背景与痛点</span>
-                        <p class="text-p"><b>“被动与模糊”的双重夹击：</b>一线BP同学常处于被动通知状态。当经管委或事业部向下拆解指标时，往往时间紧、任务重，且底层数据口径（如689留存等）易改动。在事态紧急下，很难快速给出有深度的业务解释。</p>
-                        <p class="text-p"><b>AI 落地的“空心化”门槛：</b>懂AI的人多，但能将内部规则转化为大模型理解的指令的人很少，导致模型产生幻觉，缺乏管理参考价值。</p>
+                        <span class="block-label">业务背景与破局逻辑</span>
+                        <p class="text-p"><b>双重承压下的战略诉求：</b>商业化与电商事业部正处于“一手交业绩、一手控成本”的深水区。精细化运营是避无可避的课题。</p>
+                        <p class="text-p"><b>为什么是 HRBP 破局？：</b>BP的核心视角是“透视组织治理”。盘点物理与时间资源，倒推并解决团队深层的异常问题，将“资源数据”转化为“效能探针”。</p>
                     </div>
                     <div class="content-block">
-                        <span class="block-label">策略与决策</span>
-                        <p class="text-p"><b>角色定位（翻译官）：</b>系统解码公司指标体系（如 T 序列矩阵、3S/5G模型等），翻译成大模型能精准读取的“底层业务字典”。</p>
-                        <p class="text-p"><b>结构化封装：</b>强制模型遵循“摘要➜概览➜结构现状➜流动分析➜交叉比对”五步框架，确保精准识别深层问题。</p>
-                        <p class="text-p"><b>知识开源：</b>总结出“喂-建-固-调”四步法则，内部开源实操指南，实现批量复制。</p>
+                        <span class="block-label">核心策略与管理落地</span>
+                        <p class="text-p"><b>资源提效：工位精益管理：</b>建立双轨成本计算模型。将盘点出的低效工位，清晰折算为“预估年化节约 1555 万元”的数据，说服 L4 管理者治理决心。确立“编制数×110%”弹性标尺，实现从“破局”到“机制交付”的转身。</p>
+                        <p class="text-p"><b>组织绩效精进：搭建核心指标预警基建：</b>独立承接全盘组织健康度指标清洗校验。敲定“前 30% 绿、后 30% 红”监控水位，并配套严谨场景豁免逻辑。对触底管理者实施年终奖扣罚，通过利益强挂钩打破“仅供参考”的软性约束。</p>
+                        <p class="text-p"><b>成本管理：三费与工时极值诊断：</b>沉淀出“三费”与“极端工时”交叉诊断模型。锁定“低工时且绩效低”等异常，为低效汰换提供无可辩驳的数据支撑。</p>
                     </div>
                     <div class="value-box">
-                        成果：报告撰写压缩至 10 分钟；2 份沉淀进入官方职级标准参考文档；跨域启发了 C 招与主站 HR。
+                        成果：工位项目首期回收 457 个工位，使用率从 85% 跃升至 91%；组织红绿灯基建将模糊的“人效冗余”变为量化可追责的表单。
+                    </div>
+                    <div class="ref-box">
+                        反思：需从“刚性管控”向“柔性牵引”演进，探索正向利益杠杆。警惕“唯数据论”，数据红灯应作为诊断探针而非终局。
                     </div>
                 </div>
             </div>
@@ -175,139 +172,4 @@
             <div class="project-card" onclick="this.classList.toggle('active')">
                 <div class="plus-icon">+</div>
                 <div class="card-header">
-                    <h2>“10+6（石榴计划）”与 AI 梯队建设</h2>
-                    <p class="key-point">Level 2 核心沉淀</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">策略与决策</span>
-                        <p class="text-p"><b>【阵型重塑】跨级带教：</b>推出“10+6”计划，由 E10 专家直接辅导 E6。用带教“杠杆”柔和激发高阶专家的管理意识与动能。</p>
-                        <p class="text-p"><b>【高标准验收】：</b>策划“师生同台述职”，制定《导师汇报模板》量化评估与《应届生汇报模板》，使辅导质量不仅可见且可衡量。</p>
-                        <p class="text-p"><b>【机制升级】AI 深度植入：</b>将 AI 考察设为转正必答题，现场针对 Agent 思维重构可能性抛出深度提问，机制倒逼师生展开实质应用。</p>
-                    </div>
-                    <div class="value-box">
-                        成果：盘活团队腰部力量，11 位校招平稳落地（2 人获 A 绩效）；AI 能力成功砸实成转正准入标准。
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="l2-3" class="project-section">
-            <div class="project-card" onclick="this.classList.toggle('active')">
-                <div class="plus-icon">+</div>
-                <div class="card-header">
-                    <h2>打破“重复造轮子”——将非标业务动作转化为可复用的标准 SOP</h2>
-                    <p class="key-point">Level 2 核心沉淀</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">核心动作</span>
-                        <p class="text-p"><b>凡我做过必留资产：</b>致力于把个人跑通的经验变成任何人拿来就能用的“公共资料”。</p>
-                        <p class="text-p"><b>流程拆解：</b>针对晋升评审等项目，沉淀精确到时间点与对接人的“全景排期表”。</p>
-                        <p class="text-p"><b>AI 减负：</b>引入“生成-延展-分发-提取”自动化链路，将筹备工作变为简单的“填空题”。</p>
-                    </div>
-                    <div class="value-box">
-                        成果：资产形成跨周期长尾价值；拉升团队交付底线至 80 分+，将精力释放回业务诊断。
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="l1-1" class="project-section">
-            <div class="project-card" onclick="this.classList.toggle('active')">
-                <div class="plus-icon">+</div>
-                <div class="card-header">
-                    <h2>商业化事业部校招新人训 (项目主R)</h2>
-                    <p class="key-point" style="color:#646a73;">Level 1 历程回顾</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">实施策略</span>
-                        <p class="text-p"><b>【学-练-战】串联：</b>重构“原生素材 PK 赛”，通过商审课程与冠军分享，加速新人业务融入。</p>
-                        <p class="text-p"><b>【反馈驱动】迭代：</b>建立以 NPS 为核心的反馈闭环，使 NPS 从 70.0 跃升至 93.2。</p>
-                        <p class="text-p"><b>【创新资源配置】：</b>将降本方案结余转化为小组自主团建经费，实现合规、成本、体验的三赢。</p>
-                    </div>
-                    <div class="value-box">
-                        成果：组织方人效提升 100%（2 人完成往年 4 人工作）；打造了低成本、高体验的培训范式。
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="l1-2" class="project-section">
-            <div class="project-card" onclick="this.classList.toggle('active')">
-                <div class="plus-icon">+</div>
-                <div class="card-header">
-                    <h2>商业化事业部工位精益管理 (项目主R)</h2>
-                    <p class="key-point" style="color:#646a73;">Level 1 历程回顾</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">数据驱动动作</span>
-                        <p class="text-p"><b>全景视图：</b>建立工位管理月度看板，让浪费“可视化”。</p>
-                        <p class="text-p"><b>精细化运营：</b>制定申请标准（HC×110%）与回收 SOP；推行“柔性引导”推广共享工位。</p>
-                        <p class="text-p"><b>成本建模：</b>建立双轨成本节约模型，将管理动作转化为年化节约 1555 万元的财务成果。</p>
-                    </div>
-                    <div class="value-box">
-                        成果：回收 457 个闲置工位，直接节约 398.82 万；获公司《成本管理样板间》奖。
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="l1-3" class="project-section">
-            <div class="project-card" onclick="this.classList.toggle('active')">
-                <div class="plus-icon">+</div>
-                <div class="card-header">
-                    <h2>业务中台研发中心 HRBP</h2>
-                    <p class="key-point" style="color:#646a73;">Level 1 历程回顾</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">管理动作</span>
-                        <p class="text-p"><b>“AI 破界”系列分享：</b>采取“匿名提问”机制，搭建赋能场景，解决业务同学 AI 应用迷茫。</p>
-                        <p class="text-p"><b>“激励三部曲”：</b>通过上线奖、量化价值、持续运营，成功孵化 16 个 Agent 应用。</p>
-                        <p class="text-p"><b>阵型调优：</b>推动 E10 专家高低搭配及专家型结构调整，确保人才结构与业务需要对齐。</p>
-                    </div>
-                    <div class="value-box">
-                        价值：成功孵化活跃开发者生态；确保团队在控制总成本的同时实现组织敏捷。
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2026 Winnie · 系统化思维驱动 · 凡我做过，必留资产</p>
-        </footer>
-
-    </div>
-
-    <script>
-        // 全景点击跳转
-        function jumpTo(id) {
-            const target = document.getElementById(id);
-            if (!target) return;
-            window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
-            
-            // 跳转后自动激活卡片显示详情
-            const card = target.querySelector('.project-card');
-            if (card) card.classList.add('active');
-        }
-
-        // 导航自动高亮
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.project-section');
-            const navItems = document.querySelectorAll('nav a');
-            let current = "";
-            sections.forEach(s => {
-                if (pageYOffset >= s.offsetTop - 150) current = s.getAttribute('id');
-            });
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href').includes(current)) item.classList.add('active');
-            });
-        });
-    </script>
-
-</body>
-</html>
+                    <h2>
