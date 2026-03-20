@@ -8,7 +8,7 @@
         /* 核心审美：飞书生产力美学 + ISUX 极简居中 */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Inter", "Segoe UI", "Microsoft YaHei", sans-serif; scroll-behavior: smooth; }
         
-        body { background-color: #ffffff; color: #1f2329; line-height: 1.6; overflow-x: hidden; }
+        body { background-color: #ffffff; color: #1f2329; line-height: 1.8; overflow-x: hidden; }
 
         /* ISUX 风格：居中悬浮导航 */
         header {
@@ -42,7 +42,7 @@
         /* 项目详情区 */
         .project-section { max-width: 950px; margin: 0 auto 50px; padding: 0 24px; }
         .project-card {
-            background: #ffffff; border-radius: 12px; border: 1px solid #dee0e3;
+            background: #ffffff; border-radius: 16px; border: 1px solid #dee0e3;
             padding: 40px; position: relative; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;
         }
         .project-card:hover { border-color: #3370ff; }
@@ -62,26 +62,23 @@
             max-height: 0; opacity: 0; transition: all 0.7s ease; overflow: hidden; visibility: hidden;
         }
         .project-card.active .full-detail { 
-            max-height: 20000px; opacity: 1; visibility: visible;
+            max-height: 25000px; opacity: 1; visibility: visible;
             margin-top: 32px; padding-top: 32px; border-top: 1px solid #f0f1f2; 
         }
 
-        /* 内容排版 */
+        /* 内容排版 (PPT化) */
         .content-block { margin-bottom: 40px; }
         .block-title { display: inline-block; padding: 4px 12px; background: #eff0f1; border-radius: 4px; font-size: 0.85rem; font-weight: 700; color: #646a73; margin-bottom: 20px; }
-        .text-p { font-size: 1.05rem; color: #1f2329; margin-bottom: 20px; white-space: pre-wrap; }
-        .text-p b { font-weight: 600; color: #000; }
         
         .ppt-list { list-style-type: disc; padding-left: 20px; color: #1f2329; font-size: 1rem; margin-bottom: 16px; }
-        .ppt-list li { margin-bottom: 8px; line-height: 1.6; }
+        .ppt-list li { margin-bottom: 12px; line-height: 1.7; }
         .ppt-list b { font-weight: 600; color: #000; }
 
-        .value-box { background: rgba(51, 112, 255, 0.04); padding: 32px; border-radius: 8px; border-left: 4px solid #3370ff; margin: 32px 0; font-weight: 600; font-size: 1.1rem; }
+        .value-box { background: rgba(51, 112, 255, 0.04); padding: 32px; border-radius: 8px; border-left: 4px solid #3370ff; margin: 32px 0; font-weight: 600; font-size: 1.1rem; line-height: 1.8; color: #1f2329; }
         .quote-box { background: #f9fafb; padding: 25px; border-radius: 8px; margin: 25px 0; font-style: italic; color: #646a73; border-left: 4px solid #dee0e3; }
+        .quote-box b { font-style: normal; color: #1f2329; }
         
-        .step-list { list-style: none; padding-left: 0; }
-        .step-item { display: flex; margin-bottom: 18px; font-size: 1rem; line-height: 1.6; }
-        .step-num { min-width: 28px; height: 28px; background: #3370ff; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; margin-right: 15px; flex-shrink: 0; margin-top: 2px; }
+        .highlight { color: #eb2f96; font-weight: 700; }
 
         /* 图片相关样式 */
         .img-container { margin: 24px 0 32px; text-align: center; }
@@ -90,14 +87,13 @@
             border: 1px solid #dee0e3; box-shadow: 0 4px 16px rgba(31,35,41,0.06);
             transition: 0.3s; cursor: zoom-in;
         }
-        .img-container img:hover { transform: scale(1.01); border-color: #3370ff; }
+        .img-container img:hover { transform: scale(1.01); }
         .img-caption { display: block; margin-top: 10px; font-size: 0.85rem; color: #8f959e; }
 
         .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
-        /* 新增：三图并列样式 */
         .img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 24px 0; }
 
-        /* 图片放大灯箱 */
+        /* 灯箱 */
         .image-modal {
             display: none; position: fixed; z-index: 2000; top: 0; left: 0;
             width: 100%; height: 100%; background: rgba(255, 255, 255, 0.98);
@@ -146,7 +142,7 @@
             </div>
             <div class="p-card" onclick="scrollToId('pro-2')">
                 <span class="step-num" style="margin-bottom:10px;">02</span>
-                <h3>02 结构诊断</h3>
+                <h3>02 人才重塑</h3>
                 <p>存量资源重组，在动态跑动中精准清淤。</p>
             </div>
             <div class="p-card" onclick="scrollToId('pro-3')">
@@ -175,7 +171,6 @@
                     <ul class="ppt-list">
                         <li><b>经营环境：</b>25年Q3商业化体系收入增速放缓，增收提效诉求下，ROI 需精细核算。</li>
                         <li><b>资源现状：</b>基数庞大（3900+员工，13个城市工区，4600+工位），存在组织资产“渗漏点”。</li>
-                        <li><b>破局切入点：</b>数据策略分析角色。将资源数据转化为“效能探针”，盘点物理与时间资源，倒推团队深层异常。</li>
                     </ul>
                     <div class="img-container">
                         <img src="image/房子图.png" alt="全局视角看板" onclick="zoomImage(this, event)">
@@ -185,20 +180,20 @@
                 <div class="content-block">
                     <span class="block-title">【破局策略】</span>
                     <ul class="ppt-list">
-                        <li><b>工位精益管理：</b>动态管控 HC。将 HC 生命周期与工位物理占用强绑定，建立全新成本模型，锁定并坚决回收冗余资源。</li>
-                        <li><b>动态穿透诊断：</b>引入“差旅/交通/交际”与“极端工时”交叉诊断模型。精准锁定低工时、低绩效、高三费节点，排查组织异常积碳。</li>
-                        <li><b>组织绩效清洗与校验：</b>承接核心绩效指标清洗，统一度量衡。设定“前 30% 绿、后 30% 红”水位线。</li>
+                        <li><b>工位精益管理：</b>动态管控 HC。将 HC 生命周期与工位物理占用强绑定，建立全新成本模型，回收冗余资源。</li>
+                        <li><b>动态穿透诊断：</b>引入“差旅/交通/交际”与“极端工时”交叉诊断模型。锁定低工时、低绩效、高三费节点，排查组织异常积碳。</li>
+                        <li><b>组织绩效基建：</b>承接核心绩效指标清洗，设“前 30% 绿、后 30% 红”水位线。</li>
                     </ul>
                 </div>
                 <div class="value-box">
                     【业绩结果】 <br>
-                    • 盘点并回收冗余资源，年化节约达 <span class="highlight">1500 万元+</span>（约等同 1 个行业类目 2.5 个月的做工产出）。<br>
-                    • 标记红绿灯，对触底管理者实施年终奖实质扣罚，阻断重业绩、轻组织倾向。
+                    • 盘点并回收冗余资源，年化节约达 <span class="highlight">1500 万元+</span>（约等同 1 个行业类目 2.5 个月的做工）。<br>
+                    • 标记红绿灯，对触底管理者实施年终奖实质扣罚，阻断重业绩倾向。
                 </div>
                 <div class="quote-box">
                     <b>【认知与思考】</b><br>
-                    • <b>机制演进：</b>从“刚性管控”向“柔性牵引”探索。将成本结余转化为团队激励，驱动业务由被动合规走向自发提效。<br>
-                    • <b>视角升级：</b>警惕唯数据论。数据红灯作为“诊断探针”穿透业务链路，从“数据铡刀”进化为“预警异常”与“组织诊断”。
+                    • <b>机制演进：</b>从“刚性管控”向“柔性牵引”探索，将成本结余转化为团队激励。<br>
+                    • <b>视角升级：</b>警惕唯数据论。数据红灯作为诊断探针穿透业务链路，实现组织诊断。
                 </div>
             </div>
         </div>
@@ -209,43 +204,57 @@
             <div class="plus-icon">+</div>
             <div class="card-header">
                 <h2>02 组织重塑：技术团队人才供应链破局策略</h2>
-                <span class="key-point">核心逻辑：沙漏型组织诊断 ➜ 存量重组 ➜ 动态清淤</span>
+                <span class="key-point">核心逻辑：存量资源重组 ➜ 动态甄别止损 ➜ 责任闭环</span>
             </div>
             <div class="full-detail">
                 <div class="content-block">
                     <span class="block-title">【业务背景】</span>
-                    
                     <div class="img-grid-3">
-                        <div class="img-container"><img src="image/02-1.png" alt="业务02-1" onclick="zoomImage(this, event)"><span class="img-caption">业务视图 02-1</span></div>
-                        <div class="img-container"><img src="image/02-2.png" alt="业务02-2" onclick="zoomImage(this, event)"><span class="img-caption">业务视图 02-2</span></div>
-                        <div class="img-container"><img src="image/02-3.png" alt="业务02-3" onclick="zoomImage(this, event)"><span class="img-caption">业务视图 02-3</span></div>
+                        <div class="img-container"><img src="image/02-1.png" alt="02-1" onclick="zoomImage(this, event)"><span class="img-caption">业务视图 02-1</span></div>
+                        <div class="img-container"><img src="image/02-2.png" alt="02-2" onclick="zoomImage(this, event)"><span class="img-caption">业务视图 02-2</span></div>
+                        <div class="img-container"><img src="image/02-3.png" alt="02-3" onclick="zoomImage(this, event)"><span class="img-caption">业务视图 02-3</span></div>
                     </div>
-
                     <ul class="ppt-list">
-                        <li><b>双重挤压：</b>支持业务中台向积木式演进（匹配3BU），面临成本需严控与提效大杠杆诉求。</li>
-                        <li><b>结构痛点：</b>职级呈高浓度专家“沙漏型”。百人组织仅4个一线管理，40个E9/E10专家（重技术极客，带教意愿低），底部涌入历年最多 11 个校招新人。</li>
+                        <li><b>双重挤压：</b>业务中台向积木式演进（匹配3BU），面临成本严控与提效大杠杆诉求。</li>
+                        <li><b>结构痛点：</b>职级呈高浓度专家“沙漏型”（百人组织仅4管理，40位E9/10专家）。底部涌入历年最多 11 个校招新人。</li>
                     </ul>
                 </div>
+
                 <div class="content-block">
                     <span class="block-title">【破局策略】</span>
                     <ul class="ppt-list">
-                        <li><b>存量重组：</b>摒弃外部编制，充分利用现有存量人员资产。</li>
-                        <li><b>全盘扫描：</b>精细化盘点专家梯队，聚焦管理潜质与带教意愿，筛选实战型将领。</li>
-                        <li><b>10+6 跨级结对：</b>匹配实战场景，实现双向救赎（专家练管理，校招消落地真空）。</li>
-                        <li><b>动态甄别与果断止损：</b>实战高压下识别负向价值观输出导师，果断启动 E10 协商离职，重配优质资源。</li>
-                        <li><b>责任闭环：</b>“徒弟拿产出，师傅共背评价”。组织绑定答辩，以实战结果验收。</li>
+                        <li><b>业务梳理-存量重组：</b>摒弃外部编制获取，确立循序渐进管控策略，最大化利用现有人员资产。</li>
+                        <li><b>精细化全盘扫描与对位：</b>从技术长板、管理潜质、带教意愿三维度扫描 E10+ 骨干，完成精准匹配。</li>
+                        <li><b>机制建构（10+6跨级带教）：</b>正式启动跨级带教机制。为专家植入管理实战场景，为新人配置高起点导师。</li>
+                        <li><b>人才诊断-动态甄别：</b>下探识别实战高压下的意愿偏差，处理导师“行动躺平”及输出负向价值观等组织消耗。</li>
+                        <li><b>汰换-果断止损：</b>针对“负向节点”启动 E10 协商离职，阻断蔓延并为校招同学重配优质导师。</li>
+                        <li><b>双向验收与责任闭环：</b>实施“徒弟拿产出，师傅共背评价”，将管理责任与 AI 应用及业务产出强挂钩。</li>
                     </ul>
                 </div>
+
                 <div class="value-box">
                     【业绩结果】 <br>
-                    • 受波及校招生成为核心主力，产出 2 名年度绩效 A 员工。<br>
-                    • 多个高阶专家实质性完成角色转身。<br>
-                    • 成功复用组织调整方法论，在电商团队敏捷落地。
+                    • <b>产能保卫与新生代存活：</b>及时阻断感染源，校招生迅速企稳成长为核心模块绝对主力，捍卫人才种子。<br>
+                    • <b>骨干激活与角色转身：</b>E10 群体在带教实战中唤醒管理意识，完成从“个人英雄”向“带队作战”的角色升级。<br>
+                    • <b>管理方法论沉淀：</b>输出《10+6 培养成果阶段性汇报》，沉淀出适配技术工种的梯队建设解法。
                 </div>
+
                 <div class="quote-box">
-                    <b>【认知与思考】</b><br>
-                    • <b>解题差异：</b>后台重“技术收敛”，前台重“抢夺粮草”。战场更迭决定组织解法动态变化。<br>
-                    • <b>定位转变：</b>拒绝做翻译官，做连接器。将技术杠杆与商业嗅觉深度缝合，以组织能力的确定性对抗环境的不确定性。
+                    <b>【认知反思】</b><br>
+                    • <b>动态管理是常态：</b>静态盘点非终局，BP 核心价值在于持续跑动中识别信号。面对消耗场域的节点，应及时止损。<br>
+                    • <b>框架复用与定制：</b>验证“梳理➜盘点➜匹配➜纠偏”范式。跨域复用需匹配工种底层“DNA”定制度量衡。
+                </div>
+
+                <div class="content-block">
+                    <span class="block-title">【跨界冲击与认知重塑（换乘恋爱中……）】</span>
+                    <ul class="ppt-list">
+                        <li><b>背景-视角切换与认知冲击：</b>从技术团队转向前台团队。从“追求架构先进性与长期主义”到“时刻被 GMV/ROI 驱动的极速响应”。</li>
+                        <li><b>动作-高密度 Landing：</b>学逻辑，访谈骨干还原战场，理清链路。在 CNY 与 38 大促窗口期，复用方法论快速落地组织调整，稳住底盘。</li>
+                        <li><b>洞察-角色升维：</b>
+                            • 后台重“降本增效与技术收敛”；前台重“敏捷作战与抢夺粮草”。<br>
+                            • 破局者不能只做“翻译官”，必须成为“连接器”。缝合后台技术杠杆与前台商业嗅觉，用组织能力的确定性对抗业务不确定性。
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -263,38 +272,36 @@
                 <span class="block-title">【业务背景】</span>
                 <ul class="ppt-list">
                     <li><b>痛点：</b>传统促激发项目存在“低效、耗时、假脱产”等问题。</li>
-                    <li><b>诉求：</b>构建“高质量能量场 + 精密动力设计 = 行为转化”的系统化方程，实现资源杠杆最大化。</li>
+                    <li><b>核心逻辑：</b>构建系统化方程，实现资源杠杆最大化。</li>
                 </ul>
             </div>
             <div class="content-block">
                 <span class="block-title">【破局策略】</span>
                 <div class="img-grid-2">
-                    <div class="img-container"><img src="image/校招.png" alt="校招新人训" onclick="zoomImage(this, event)"><span class="img-caption">校招新人全景图</span></div>
-                    <div class="img-container"><img src="image/社招.png" alt="社招新人训" onclick="zoomImage(this, event)"><span class="img-caption">社招新人全景图</span></div>
+                    <div class="img-container"><img src="image/校招.png" alt="校招" onclick="zoomImage(this, event)"><span class="img-caption">校招素材 PK 赛现场</span></div>
+                    <div class="img-container"><img src="image/社招.png" alt="社招" onclick="zoomImage(this, event)"><span class="img-caption">社招敏捷融入训练营</span></div>
                 </div>
                 <ul class="ppt-list">
-                    <li><b>结构脱水（体验关）：</b>排期压缩为“线上自助+2天线下”。建立“讲课-练习-讲错题-激励互动-实操投流”学习闭环。降本结余用于团队夜宵，消解假脱产抗拒。</li>
-                    <li><b>动力设计（动力源）：</b>包装情感战役（教师节 AI 写诗），无痛植入大模型应用。设计“睡后积分”利益杠杆，共享 AI 经验被复用即获持续收益，驱动向“创造复用资产”转型。</li>
+                    <li><b>结构脱水（体验关）：</b>重构为“线上自助+2天线下”。建立交互闭环学习，降本结余用于夜宵，消解假脱产抗拒。</li>
+                    <li><b>动力设计（动力源）：</b>包装情感战役（AI 写诗）无痛植入技能。设计“睡后积分”杠杆，驱动向“创造复用资产”转型。</li>
                     <li><b>系统封装：</b>剥离无效消耗，输出分钟级运转 SOP。</li>
                 </ul>
             </div>
             <div class="value-box">
                 【业绩结果】 <br>
-                • <b>极致降本与杠杆交付：</b>验证“1+1”极简人力跑通大型项目，单期预算同比缩减 26%，人均成本下降 650 元。<br>
-                • <b>体验痛点清零：</b>彻底解决“周末占用”问题，整体 NPS 达 <span class="highlight">83.13</span>（卓越水平），末期贬损者降至 0。<br>
-                • <b>沉淀高复用资产：</b>输出标准 SOP 与 22 门自助学习导航，赋予策略跨团队、可轮岗的工程化能力，大幅拉升交付底线。
+                • <b>极致降本：</b>单期预算缩减 26%，人均立省 650 元。<br>
+                • <b>高标交付：</b>末期贬损者降至 0，获 93+ NPS 高位，沉淀 22 门自助学习导航。
             </div>
             <div class="quote-box">
                 <b>【认知与思考】</b><br>
-                • 促激发的本质并非气氛渲染，而是极致的资源重排与标准化封装。<br>
-                • 理顺“场域+动力”逻辑，打造如自动售货机般持续输出高能效的业务系统。
+                • 促激发的本质并非气氛渲染，而是极致的资源重排与标准化封装。即便人员流动，系统也能持续输出高能效。
             </div>
         </div>
     </div>
     </div>
 
     <div id="pro-4" class="project-section">
-        <div class="project-card" onclick="this.classList.toggle('active')">
+        <div class="project-card" onclick="toggleCard(this)">
             <div class="plus-icon">+</div>
             <div class="card-header">
                 <h2>04 技能升维：AI 杠杆实现脱壳进化</h2>
@@ -304,31 +311,28 @@
                 <div class="content-block">
                     <span class="block-title">【业务背景】</span>
                     <ul class="ppt-list">
-                        <li><b>痛点：</b>海量碎片化、高损耗的事务性任务严重挤压业务思考空间。</li>
-                        <li><b>诉求：</b>需借助 AI 杠杆串联分散事务，拒绝低效循环，实现效能突破与脱壳进化。</li>
+                        <li><b>痛点：</b>海量碎片化任务挤压业务思考空间。借助 AI 杠杆串联分散事务，实现“脱壳进化”。</li>
                     </ul>
                 </div>
                 <div class="content-block">
                     <span class="block-title">【破局策略】</span>
                     <ul class="ppt-list">
-                        <li><b>产品化自研：</b>搭建全周期数字助理矩阵（30+ AI Agent），覆盖绩效评价、数据分析、问卷调研等场景。由 HR 定义规则，AI 提供算力。</li>
-                        <li><b>深度灰度测试：</b>作为人力线 AI 产品的深度用户，持续报错、修正提示词与监督迭代，以最严标准定义业务生产力。</li>
-                        <li><b>方法论赋能：</b>提炼 SPARK 提问公式，输出《操作指南》与实战课程，将个人偏好成功转化为组织群体资产。</li>
+                        <li><b>我即产品：</b>自研 30+ AI Agent。由 HR 定义规则，AI 提供算力。</li>
+                        <li><b>我即用户：</b>深度灰度测试，持续报错迭代，以最严标准定义生产力。</li>
+                        <li><b>我即讲师：</b>总结 SPARK 提问公式，将 AI 偏好转化为群体资产包。</li>
                     </ul>
                 </div>
                 <div class="value-box">
                     【业绩结果】 <br>
-                    • 复杂数据分析报告生成耗时由 1 小时极缩至 10 分钟。<br>
-                    • 验证掌握 AI 杠杆的单兵能够独立闭环大型项目。<br>
-                    • 沉淀的 30+ Agent 实现“去经验化、资产化”，保障跨业务场景的高质量、零公差运行。
+                    • <b>效能突破：</b>报告耗时由 1 小时缩至 10 分钟。<br>
+                    • <b>资产封装：</b>30+ Agent 实现“去经验化”，换个战场依然零公差运行。
                 </div>
                 <div class="quote-box">
                     <b>【认知与思考】</b><br>
-                    • <b>核心壁垒：</b>核心竞争力在于提问、判断与转化能力，用以弥补 AI 缺乏的现实上下文与灰度决策力。<br>
-                    • <b>脑力与算力解耦：</b>HR 定义规则边界，AI 负责推演。未来将深耕 Agent 军团，封装专家隐性经验，以确定性组织能力对冲业务不确定性。
+                    • <b>核心壁垒：</b>核心竞争力在于提问、判断与转化能力。脑力与算力解耦，未来深耕 Agent 军团封装专家隐性经验。
                 </div>
                 <div class="img-container">
-                    <img src="image/luigi.webp" alt="AI Agent Luigi" onclick="zoomImage(this, event)">
+                    <img src="image/luigi.webp" alt="Luigi" onclick="zoomImage(this, event)">
                     <span class="img-caption">图 4：自研 AI 数字化助理 Luigi 矩阵</span>
                 </div>
             </div>
