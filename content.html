@@ -3,313 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 核心业绩沉淀 | Winnie</title>
+    <title>2026 述职沉淀 | 全干工程师 Winnie</title>
     <style>
         /* 核心审美：飞书生产力美学 + ISUX 极简居中 */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft YaHei UI", "微软雅黑", sans-serif; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Inter", "Segoe UI", "Microsoft YaHei", sans-serif; scroll-behavior: smooth; }
         
-        body { background-color: #ffffff; color: #1f2329; line-height: 1.8; overflow-x: hidden; }
+        body { background-color: #ffffff; color: #1f2329; line-height: 1.6; overflow-x: hidden; }
 
         /* ISUX 风格：居中悬浮导航 */
         header {
-            position: fixed; top: 0; width: 100%; height: 80px;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            position: fixed; top: 0; width: 100%; height: 70px;
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             display: flex; justify-content: center; align-items: center;
-            z-index: 1000; border-bottom: 1px solid #eff0f1;
+            z-index: 1000; border-bottom: 1px solid #f0f1f2;
         }
-        nav { display: flex; gap: 15px; }
+        nav { display: flex; gap: 12px; }
         nav a { 
-            text-decoration: none; color: #646a73; font-size: 0.85rem; font-weight: 500; 
-            background: #f5f7fa; padding: 6px 14px; border-radius: 8px;
-            transition: 0.3s;
+            text-decoration: none; color: #646a73; font-size: 0.9rem; font-weight: 500; 
+            padding: 8px 16px; border-radius: 6px; transition: 0.2s;
         }
-        nav a:hover, nav a.active { color: #ffffff; background: #0052ff; }
+        nav a:hover, nav a.active { color: #3370ff; background: rgba(51, 112, 255, 0.1); }
 
-        /* Hero 4 块全景区 */
-        .hero { max-width: 1100px; margin: 160px auto 80px; padding: 0 20px; text-align: center; }
-        .hero h1 { font-size: 2.6rem; font-weight: 600; color: #1f2329; margin-bottom: 24px; letter-spacing: -1px; }
-        .hero p { font-size: 1.1rem; color: #646a73; max-width: 850px; margin: 0 auto 60px; text-align: justify; text-justify: inter-word; }
+        /* Hero 觉醒区 */
+        .hero { max-width: 1000px; margin: 140px auto 60px; padding: 0 24px; text-align: center; }
+        .hero .tagline { color: #3370ff; font-weight: 600; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: block; }
+        .hero h1 { font-size: 2.8rem; font-weight: 700; color: #1f2329; margin-bottom: 24px; letter-spacing: -1px; }
+        .hero p { font-size: 1.15rem; color: #646a73; max-width: 800px; margin: 0 auto 60px; line-height: 1.8; }
 
-        .panorama-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .panorama-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
         .p-card { 
-            background: #f5f7fa; padding: 30px; border-radius: 12px; transition: 0.4s; 
+            background: #f5f7fa; padding: 24px; border-radius: 12px; transition: 0.3s; 
             cursor: pointer; text-align: left; border: 1px solid transparent;
         }
-        .p-card:hover { background: #ffffff; border-color: #0052ff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transform: translateY(-5px); }
-        .p-card .level-tag { font-size: 0.7rem; font-weight: 700; color: #0052ff; margin-bottom: 12px; display: block; }
-        .p-card h3 { font-size: 1.1rem; margin-bottom: 8px; font-weight: 600; }
+        .p-card:hover { background: #ffffff; border-color: #3370ff; box-shadow: 0 12px 24px rgba(31,35,41,0.08); transform: translateY(-4px); }
+        .p-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: #1f2329; }
+        .p-card p { font-size: 0.85rem; color: #8f959e; margin: 0; }
 
         /* 项目详情区 */
-        .project-section { max-width: 950px; margin: 0 auto 60px; padding: 0 20px; }
+        .project-section { max-width: 900px; margin: 0 auto 40px; padding: 0 24px; }
         .project-card {
-            background: #ffffff; border-radius: 16px; border: 1px solid #dee0e3;
-            padding: 40px; position: relative; transition: 0.5s; cursor: pointer;
+            background: #ffffff; border-radius: 12px; border: 1px solid #dee0e3;
+            padding: 32px; position: relative; transition: 0.3s; cursor: pointer;
         }
-        .project-card:hover { border-color: #0052ff; }
+        .project-card:hover { border-color: #3370ff; box-shadow: 0 4px 16px rgba(31,35,41,0.04); }
         
-        .card-header { padding-right: 60px; }
-        .card-header h2 { font-size: 1.6rem; font-weight: 600; color: #1f2329; margin-bottom: 12px; line-height: 1.4; }
-        .card-header .key-point { color: #0052ff; font-size: 0.95rem; font-weight: 500; }
+        .card-header h2 { font-size: 1.5rem; font-weight: 600; color: #1f2329; margin-bottom: 8px; }
+        .card-header .key-point { color: #3370ff; font-size: 0.9rem; font-weight: 500; }
 
-        /* 极简旋转加号 */
         .plus-icon {
-            position: absolute; top: 45px; right: 40px; width: 36px; height: 36px;
-            background: #f5f7fa; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; font-weight: 300; transition: 0.4s; color: #646a73; pointer-events: none;
+            position: absolute; top: 32px; right: 32px; width: 32px; height: 32px;
+            background: #f2f3f5; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; transition: 0.3s; color: #646a73;
         }
-        .project-card.active .plus-icon { transform: rotate(45deg); background: #0052ff; color: #fff; }
+        .project-card.active .plus-icon { transform: rotate(45deg); background: #3370ff; color: #fff; }
 
         /* 详情展开 */
         .full-detail {
-            max-height: 0; opacity: 0; transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden; visibility: hidden;
+            max-height: 0; opacity: 0; transition: all 0.5s ease; overflow: hidden;
         }
-        .project-card.active .full-detail { max-height: 20000px; opacity: 1; visibility: visible; border-top: 1px solid #dee0e3; margin-top: 32px; padding-top: 32px; }
+        .project-card.active .full-detail { max-height: 5000px; opacity: 1; margin-top: 24px; padding-top: 24px; border-top: 1px dashed #dee0e3; }
 
-        /* 飞书正文排版 */
-        .content-block { margin-bottom: 48px; }
-        .block-label { display: inline-block; padding: 4px 12px; background: #eff0f1; border-radius: 4px; font-size: 0.8rem; font-weight: 600; color: #646a73; margin-bottom: 20px; }
-        .text-p { font-size: 1.05rem; color: #1f2329; margin-bottom: 20px; white-space: pre-wrap; text-align: justify; }
-        .text-p b { color: #000; font-weight: 600; }
+        /* 内容排版 */
+        .content-block { margin-bottom: 32px; }
+        .block-title { font-size: 0.85rem; font-weight: 700; color: #8f959e; text-transform: uppercase; margin-bottom: 12px; display: block; letter-spacing: 1px; }
+        .text-p { font-size: 1rem; color: #1f2329; margin-bottom: 16px; }
+        .text-p b { font-weight: 600; color: #000; }
+        
+        /* 数字化高亮 */
+        .highlight { color: #eb2f96; font-weight: 700; font-family: "Consolas", monospace; }
+        .blue-highlight { color: #3370ff; font-weight: 600; }
 
-        /* 重点数字高亮 */
-        .highlight-num { color: #ff5722; font-weight: 700; font-size: 1.15rem; }
+        .quote-box { background: #f9fafb; padding: 20px; border-left: 4px solid #3370ff; border-radius: 4px; margin: 20px 0; font-style: italic; font-size: 0.95rem; color: #646a73; }
+        
+        .step-list { list-style: none; padding-left: 0; }
+        .step-item { display: flex; margin-bottom: 12px; font-size: 0.95rem; }
+        .step-num { min-width: 24px; height: 24px; background: #3370ff; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; margin-right: 12px; flex-shrink: 0; margin-top: 2px; }
 
-        .value-box { background: rgba(0, 82, 255, 0.04); padding: 32px; border-radius: 8px; border-left: 4px solid #0052ff; margin: 32px 0; font-weight: 600; font-size: 1.05rem; }
-        .ref-box { background: #f5f7fa; padding: 28px; border-radius: 8px; margin: 32px 0; font-style: italic; color: #646a73; border-left: 4px solid #dee0e3; }
+        footer { text-align: center; padding: 80px 0; color: #8f959e; font-size: 0.85rem; }
 
-        /* 返回首页悬浮按钮 */
-        .back-to-top {
-            position: fixed; bottom: 40px; right: 40px; width: 52px; height: 52px;
-            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border: 1px solid #eff0f1; border-radius: 12px; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; cursor: pointer; transition: 0.4s;
-            z-index: 2000; opacity: 0; visibility: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        /* 悬浮按钮 */
+        .back-home {
+            position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px;
+            background: #ffffff; border: 1px solid #dee0e3; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); z-index: 1000; transition: 0.3s;
         }
-        .back-to-top:hover { background: #0052ff; border-color: #0052ff; transform: translateY(-5px); box-shadow: 0 8px 24px rgba(0, 82, 255, 0.2); }
-        .back-to-top.visible { opacity: 1; visibility: visible; }
-        .back-icon { font-size: 1.2rem; color: #646a73; transition: 0.3s; }
-        .back-text { font-size: 0.6rem; color: #646a73; margin-top: -2px; transition: 0.3s; }
-        .back-to-top:hover .back-icon, .back-to-top:hover .back-text { color: #ffffff; }
+        .back-home:hover { transform: scale(1.1); border-color: #3370ff; color: #3370ff; }
 
-        footer { text-align: center; padding: 100px 0; color: #8f959e; font-size: 0.9rem; border-top: 1px solid #eff0f1; }
-
-        @media (max-width: 1000px) { .panorama-grid { grid-template-columns: 1fr; } nav { display: none; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 2rem; } .panorama-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <header>
         <nav id="topNav">
-            <a href="#pro-1">01 全局视角</a>
-            <a href="#pro-2">02 人才供应链</a>
-            <a href="#pro-3">03 促激发</a>
-            <a href="#pro-4">04 技能升维</a>
+            <a href="#pro-1">数据探针</a>
+            <a href="#pro-2">人才破局</a>
+            <a href="#pro-3">促激发</a>
+            <a href="#pro-4">技能升维</a>
         </nav>
     </header>
 
-    <div class="container">
+    <div class="hero">
+        <span class="tagline">HRBP 觉醒之路 · 持续迭代 · 无限进步</span>
+        <h1>重生之开局以为是养虾人<br>没想到小龙虾竟是我自己</h1>
+        <p>
+            我是winnie，一个拒绝“低效拉磨”的<b>全干工程师</b>。通过“数据探针”穿透治理、通过“逻辑重构”重组阵型、通过“AI 杠杆”实现资产封装。
+        </p>
         
-        <div class="hero">
-            <h1>持续迭代，无限进步</h1>
-            <p>
-                拒绝碎片的事务堆砌，致力于通过“数据探针”穿透治理、通过“逻辑重构”重组阵型、通过“AI 杠杆”实现资产封装。
-            </p>
-            
-            <div class="panorama-grid">
-                <div class="p-card" onclick="jumpTo('pro-1')">
-                    <span class="level-tag">DATA DRIVEN</span>
-                    <h3>01 数据探针</h3>
-                    <p>数据铡刀下的精益运营，实现确定性降本与闭环。</p>
-                </div>
-                <div class="p-card" onclick="jumpTo('pro-2')">
-                    <span class="level-tag">DYNAMIC TALENT</span>
-                    <h3>02 人才破局</h3>
-                    <p>存量错位重组，在动态跑动中精准止损清淤。</p>
-                </div>
-                <div class="p-card" onclick="jumpTo('pro-3')">
-                    <span class="level-tag">ENGINE DESIGN</span>
-                    <h3>03 动力引擎</h3>
-                    <p>高质量场域+利益激励，重构大型项目人效比。</p>
-                </div>
-                <div class="p-card" onclick="jumpTo('pro-4')">
-                    <span class="level-tag">AI EVOLUTION</span>
-                    <h3>04 技能升维</h3>
-                    <p>自研 30+ Agent。将经验封装为数字资产。</p>
-                </div>
+        <div class="panorama-grid">
+            <div class="p-card" onclick="scrollToId('pro-1')">
+                <h3>01 全局视角</h3>
+                <p>数据驱动的精益运营，年化节约损耗 1500万+。</p>
+            </div>
+            <div class="p-card" onclick="scrollToId('pro-2')">
+                <h3>02 结构诊断</h3>
+                <p>存量资源重组，在动态跑动中精准清淤。</p>
+            </div>
+            <div class="p-card" onclick="scrollToId('pro-3')">
+                <h3>03 促激发</h3>
+                <p>高质量场域 + 动力设计，人效提升100%。</p>
+            </div>
+            <div class="p-card" onclick="scrollToId('pro-4')">
+                <h3>04 技能升维</h3>
+                <p>自研 30+ Agent，让管理动作零公差复制。</p>
             </div>
         </div>
-
-        <div id="pro-1" class="project-section">
-            <div class="project-card" onclick="toggleCard(this)">
-                <div class="plus-icon">+</div>
-                <div class="card-header">
-                    <h2>01 全局视角：数据驱动组织管理迈向精细化运营</h2>
-                    <p class="key-point">核心逻辑：资源数据化 ➜ 效能探针化 ➜ 治理机制化</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">业务背景与破局逻辑</span>
-                        <p class="text-p"><b>战略诉求：</b> 商业化与电商事业部正处于“一手交业绩、一手控成本”的深水区。面对庞大的基数，精细化运营是必答题。</p>
-                        <p class="text-p"><b>HRBP 破局点：</b> 区别于财务（控预算）和行政（管资产），HRBP 核心视角是<b>“透视组织治理”</b>。将资源数据转化为“效能探针”，通过盘点物理与时间资源，倒推解决团队深层异常。</p>
-                    </div>
-                    <div class="content-block">
-                        <span class="block-label">核心策略与管理落地</span>
-                        <p class="text-p"><b>资源提效（工位精益）：</b> 建立双轨成本模型，将低效工位清晰折算为预估 <span class="highlight-num">1555 万元/年</span>。确立“编制数×110%”弹性标尺，实现从“单点破局”到“常态化机制交付”。</p>
-                        <p class="text-p"><b>组织绩效（红绿灯基建）：</b> 独立承接 T1 保留率、0-3 小管幅等指标校验，确保异常可定位。敲定“前 30% 绿、后 30% 红”水位线，对触底管理者实施<b>年终奖实质扣罚</b>，强制建立利益强挂钩。</p>
-                        <p class="text-p"><b>成本管理（穿透诊断）：</b> 沉淀“三费”与“极端工时”交叉诊断模型。精准锁定“低工时+低绩效”或“低工时+极高交际费”等异常节点，为低效汰换提供无可辩驳的数据支柱。</p>
-                    </div>
-                    <div class="value-box">
-                        战绩：首期回收 457 个工位，产生等效成本节约 <span class="highlight-num">398.82 万元</span>。模式获《成本管理样板间》分享，NPS 达 <span class="highlight-num">88.89</span>。
-                    </div>
-                    <div class="ref-box">
-                        反思：数据红灯终局不应止于惩罚，更应作为诊断探针。需警惕“唯数据论”，实现从“数据铡刀”向“组织诊断”的视角升级。
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="pro-2" class="project-section">
-            <div class="project-card" onclick="toggleCard(this)">
-                <div class="plus-icon">+</div>
-                <div class="card-header">
-                    <h2>02 组织重塑：技术团队人才供应链破局策略</h2>
-                    <p class="key-point">核心逻辑：存量错位重组，在动态跑动中精准止损</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">业务背景与破局逻辑</span>
-                        <p class="text-p"><b>沙漏型断层：</b> 顶部 E10 专家淤积（重技术轻管理），底部校招生（11 人）创历史新高。争取增量预算无解，必须向存量要 ROI。</p>
-                        <p class="text-p"><b>错位重构：</b> 确立“E10 × E6 跨级结对”救赎策略。将 E10 的晋升瓶颈转化为“管理练兵场”，让新生代成为承接 AI 战略的实战生力军。</p>
-                    </div>
-                    <div class="content-block">
-                        <span class="block-label">核心策略与管理落地</span>
-                        <p class="text-p"><b>精准对位：</b> 三维度深度扫描 E10+ 骨干，完成“人-岗-角色”对位匹配。</p>
-                        <p class="text-p"><b>动态止损（高光时刻）：</b> 实战中识别“带教意愿漂移”。针对行动躺平、输出负向价值观的节点<b>果断启动协商离职</b>，阻断组织毒化，并即时为校招重配优质导师。</p>
-                        <p class="text-p"><b>双向验收：</b> 实施“徒弟拿产出，师傅背评价”。以 AI 应用成效倒推评价导师质量，管理责任从表态转向实质结果。</p>
-                    </div>
-                    <div class="value-box">
-                        战绩：及时阻断感染源，受波及校招生成长为核心主力。沉淀《10+6 培养成果汇报》，形成适配技术工种的梯队建设范式。
-                    </div>
-                    <div class="ref-box">
-                        反思：动态管理是常态。及时止损是保护好苗子、捍卫机制可信度的底线。框架可复用，但度量衡需定制。
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="pro-3" class="project-section">
-            <div class="project-card" onclick="toggleCard(this)">
-                <div class="plus-icon">+</div>
-                <div class="card-header">
-                    <h2>03 促激发：全局项目运营与高效能激发方法论</h2>
-                    <p class="key-point">核心公式：场域体验(爽/新/趣) + 动力设计(利益绑定) = 行为转化</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">高质量场域：重塑用户体验</span>
-                        <p class="text-p"><b>结构性脱水（新人训）：</b> 排期 3 天压至 2 天不占周末。凭借 SOP 将 4 人协作压缩为“1 正式+1 协同”单兵闭环。通过“商机 PK/原生素材 PK”驱动认知转化。</p>
-                        <p class="text-p"><b>隐性价值显性化：</b> 1024/感恩节植入“解密/加鸡腿”等极简爽感机制。为技术极客提供精准的情绪按摩与身份认同。</p>
-                    </div>
-                    <div class="content-block">
-                        <span class="block-label">精密动力设计：激发主动进化</span>
-                        <p class="text-p"><b>认知破冰：</b> 教师节“AI 三行诗”战役，将严肃技能拉练包装为情感表达，驱动新同学对 AI 工具100% 实际调用。</p>
-                        <p class="text-p"><b>利益耦合（AI 激励）：</b> 构建 L1-L5 微光积分体系。引入<b>“睡后积分”</b>杠杆，驱动专家从“消耗算力”向“创造资产”转型。</p>
-                    </div>
-                    <div class="value-box">
-                        战绩：新人训成本同比<b>缩减 26%</b>，人均节约 650 元。整体 NPS 达 <span class="highlight-num">83.13</span>（卓越水平）。交付 22 门自助学习导航。
-                    </div>
-                    <div class="ref-box">
-                        反思：促激发本质是“先过体验关，再建动力源”。枯燥是认知的绝缘体。只有当个人利益与战略诉求精确耦合，认知才能转化为行为。
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="pro-4" class="project-section">
-            <div class="project-card" onclick="toggleCard(this)">
-                <div class="plus-icon">+</div>
-                <div class="card-header">
-                    <h2>04 技能升维：“AI + 我”的全场景赋能与进化</h2>
-                    <p class="key-point">核心壁垒：定义问题(提问) + 审视逻辑(判断) + 交付价值(转化)</p>
-                </div>
-                <div class="full-detail">
-                    <div class="content-block">
-                        <span class="block-label">我即产品：从“疲于奔命”到“系统沉淀”</span>
-                        <p class="text-p"><b>Agent 矩阵：</b> 自研 <span class="highlight-num">20+ AI Agent</span>。涵盖 JD 写作、绩效评语、三费分析、Doc 画图。实现数据分析耗时从 1 小时压缩至 10 分钟。</p>
-                        <p class="text-p"><b>方法论封装：</b> 总结 <span class="highlight-num">SPARK 提问公式</span>。将个人应用偏好通过讲师模式转化为组织效能，实现管理经验的“资产化”与“去经验化”。</p>
-                    </div>
-                    <div class="content-block">
-                        <span class="block-label">未来规划：引体向上的进化选择</span>
-                        <p class="text-p">1. <b>自身工作流资产化：</b> 夯实交付底盘，将非标实战经验固化为自动化流程。</p>
-                        <p class="text-p">2. <b>专家经验智能化：</b> 提取关键人才隐性经验进行智能封装，打造效能标杆。</p>
-                        <p class="text-p">3. <b>生产关系提效：</b> 深入业务真实生产链，帮助业务看清卡点并进行关系重构。</p>
-                    </div>
-                    <div class="value-box">
-                        认知思考：AI 时代 HRBP 应实现“脑力与算力解耦”。由 HR 定义规则边界，由 AI 负责数据推演，实现组织阵型的“动态清淤”。
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2026 Winnie · 效能架构师 · 凡我做过，必留资产</p>
-        </footer>
-
     </div>
 
-    <div id="backHome" class="back-to-top" onclick="window.location.href='index.html'">
-        <span class="back-icon">🏠</span>
-        <span class="back-text">首页</span>
+    <div id="pro-1" class="project-section">
+        <div class="project-card" onclick="this.classList.toggle('active')">
+            <div class="plus-icon">+</div>
+            <div class="card-header">
+                <h2>01 全局视角：数据驱动组织精益运营</h2>
+                <span class="key-point">核心动作：资源提效 ➜ 成本管理 ➜ 组织绩效基建</span>
+            </div>
+            <div class="full-detail">
+                <div class="content-block">
+                    <span class="block-title">业务破局</span>
+                    <p class="text-p">作为<b>数据策略分析角色</b>，任务是为组织寻找“元效”挤压空间。在增速放缓背景下，每一分钱的 ROI 都必须算得清、看得见。</p>
+                </div>
+                <div class="content-block">
+                    <span class="block-title">核心策略落地</span>
+                    <p class="text-p"><b>工位精益管理：</b> 锁定 HC 生命周期与物理占用。回收冗余资源产生的年化节约高达 <span class="highlight">1500 万元+</span>，约等于 1 个行业类目 2.5 个月的做工。</p>
+                    <p class="text-p"><b>三费与时长穿透：</b> 建立交叉诊断模型，精准锁定“低工时、低绩效、高三费”的组织积碳，让损耗行为无处遁形。</p>
+                    <p class="text-p"><b>红绿灯基建：</b> 设定“前 30% 绿、后 30% 红”水位线，对触底管理者实施<b>年终奖实质扣罚</b>，减轻“重业绩、轻组织”的惯性。</p>
+                </div>
+                <div class="quote-box">
+                    未来演进方向：从“数据铡刀”进化为“预警异常”，最终实现“组织诊断”。
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div id="pro-2" class="project-section">
+        <div class="project-card" onclick="this.classList.toggle('active')">
+            <div class="plus-icon">+</div>
+            <div class="card-header">
+                <h2>02 组织重塑：技术团队人才供应链破局</h2>
+                <span class="key-point">核心逻辑：沙漏型组织诊断 ➜ 存量重组 ➜ 动态清淤</span>
+            </div>
+            <div class="full-detail">
+                <div class="content-block">
+                    <span class="block-title">破局六步法</span>
+                    <ul class="step-list">
+                        <li class="step-item"><span class="step-num">1</span>业务梳理：编制不外求，向存量要 ROI。</li>
+                        <li class="step-item"><span class="step-num">2</span>精细扫描：三维评估 E10+ 骨干，挑选能带兵的将。</li>
+                        <li class="step-item"><span class="step-num">3</span>10+6结对：开启“双向救赎”，高阶专家练管理，校招新人消真空。</li>
+                        <li class="step-item"><span class="step-num">4</span>动态甄别：实战高压下识别“带教意愿漂移”与负向节点。</li>
+                        <li class="step-item"><span class="step-num">5</span>果断止损：针对负向节点<b>启动协商离职</b>，阻断对人才种子的感染。</li>
+                        <li class="step-item"><span class="step-num">6</span>责任闭环：徒弟拿产出，师傅背评价，管理责任实质化。</li>
+                    </ul>
+                </div>
+                <div class="quote-box">
+                    洞察：拒绝做组织“翻译官”，要做“连接器”。用组织能力的确定性去对抗环境的不确定性。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pro-3" class="project-section">
+    <div class="project-card" onclick="this.classList.toggle('active')">
+        <div class="plus-icon">+</div>
+        <div class="card-header">
+            <h2>03 促激发：全局项目运营与系统方程</h2>
+            <span class="key-point">核心公式：场域体验(爽/新/趣) + 动力设计(利益绑定) = 行为转化</span>
+        </div>
+        <div class="full-detail">
+            <div class="content-block">
+                <span class="block-title">体验关：迭代沉浸式学习逻辑</span>
+                <p class="text-p"><b>课程逻辑重构：</b> 摒弃单向宣讲，建立<b>“讲课-练习-抖包袱讲错题”</b>的交互闭环，让合规标准与推荐逻辑在激励互动中自然内化。邀请往届冠军分享 PK 技巧，驱动学员从“审核者”转身为“创作者”。</p>
+                <p class="text-p"><b>全链路实战闭环：</b> 指导学员完成从拍摄、剪辑到上传投流的全生命周期演练。通过末尾<b>“素材多米诺”</b>搭建，将小组间的 PK 竞争转化为全场的协作共振。</p>
+                <p class="text-p"><b>资源再分配：</b> 将降本省下的酒店费转化为<b>“全场夜宵炸鸡”</b>。用极简的爽感消解“假脱产”抗拒，达成真正的<b>“玩的爽、课程新、学习趣”</b>。</p>
+            </div>
+            <div class="content-block">
+                <span class="block-title">动力源：从“被动参加”到“主动建设”</span>
+                <p class="text-p"><b>认知破冰（校招）：</b> 借教师节策划<b>“三行颂诗”情感战役</b>，引导新同学调用 AI 给导师写诗。将原本生硬的工具拉练包装成情感表达，实现 AI 技能的无痛植入。</p>
+                <p class="text-p"><b>利益杠杆（事业部）：</b> 设计<b>“睡后积分”体系</b>。鼓励员工公开优质 AI 经验，只要被复用即可获得持续收益。驱动团队从“单纯消耗算力”转向“创造复用资产”，实现组织经验的滚动式增值。</p>
+            </div>
+            <div class="value-box">
+                战绩：新人训成本同比<b>缩减 26%</b>，人均立省 650 元；NPS 稳居 <span class="highlight">93.2</span> 高位；通过“1+1”极简人力模式，实现大型项目的高效能交付。
+            </div>
+            <div class="ref-box">
+                反思：枯燥是认知的绝缘体。真正的行为改变无法靠喊口号驱动，必须依赖切实的利益机制牵引。
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="pro-4" class="project-section">
+        <div class="project-card" onclick="this.classList.toggle('active')">
+            <div class="plus-icon">+</div>
+            <div class="card-header">
+                <h2>04 技能升维：AI + 我 的全场景赋能</h2>
+                <span class="key-point">核心策略：我即产品 + 我即用户 + 我即讲师</span>
+            </div>
+            <div class="full-detail">
+                <div class="content-block">
+                    <span class="block-title">智械进化成果</span>
+                    <p class="text-p"><b>我即产品：</b> 自研 <span class="blue-highlight">30+ AI Agent</span>。将手搓 1 小时的数据分析缩短至 <span class="highlight">10 分钟</span>。</p>
+                    <p class="text-p"><b>我即用户：</b> 深度灰度测试。持续报错、持续修正提示词，做最挑剔的用户。</p>
+                    <p class="text-p"><b>方法论封装：</b> 总结 <span class="blue-highlight">SPARK 提问公式</span>。将 AI 从个人偏好转化为组织群体资产。</p>
+                </div>
+                <div class="quote-box">
+                    未来观：实现“脑力与算力解耦”。HR 定义规则边界，AI 负责数据推演，实现复杂管理动作的“零公差复制”。
+                </div>
+                <div class="content-block">
+                    <span class="block-title">未来规划（Agent 军团计划）</span>
+                    <p class="text-p">1. <b>工作流资产化：</b> 将非标经验固化为自动化 SOP。<br>2. <b>专家经验 Agent 化：</b> 封装隐性经验，牵引团队提效。<br>3. <b>生产链提效改造：</b> 深入业务流，看清卡点并重构生产关系。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Winnie · 凡我做过，必留资产</p>
+    </footer>
+
+    <div class="back-home" onclick="window.scrollTo({top:0, behavior:'smooth'})">UP</div>
 
     <script>
-        // 全景区跳转交互
-        function jumpTo(id) {
-            const target = document.getElementById(id);
-            if (!target) return;
-            window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
-            
+        function scrollToId(id) {
+            const element = document.getElementById(id);
+            window.scrollTo({ top: element.offsetTop - 100, behavior: 'smooth' });
+            // 自动展开
             setTimeout(() => {
-                const card = target.querySelector('.project-card');
-                if (card) {
-                    document.querySelectorAll('.project-card').forEach(c => c.classList.remove('active'));
-                    card.classList.add('active');
-                }
+                element.querySelector('.project-card').classList.add('active');
             }, 600);
         }
 
-        // 点击展开/收起逻辑
-        function toggleCard(card) {
-            const isActive = card.classList.contains('active');
-            document.querySelectorAll('.project-card').forEach(c => c.classList.remove('active'));
-            if (!isActive) card.classList.add('active');
-        }
-
-        // 导航自动高亮 & 悬浮按钮显隐
+        // 简单的导航高亮
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('.project-section');
-            const navItems = document.querySelectorAll('#topNav a');
-            const homeBtn = document.getElementById('backHome');
+            const navLinks = document.querySelectorAll('#topNav a');
             let current = "";
-
-            // 按钮显隐控制
-            if (window.pageYOffset > 400) {
-                homeBtn.classList.add('visible');
-            } else {
-                homeBtn.classList.remove('visible');
-            }
-
-            // 导航高亮逻辑
-            sections.forEach(s => {
-                if (window.pageYOffset >= s.offsetTop - 150) current = s.getAttribute('id');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
             });
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href').includes(current)) item.classList.add('active');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
             });
         });
     </script>
-
 </body>
 </html>
